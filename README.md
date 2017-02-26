@@ -1,1 +1,3 @@
-# Sagenkarta-GUI
+# Sägenkarta GUI
+
+Gränssnittet för Sägenkartan.
