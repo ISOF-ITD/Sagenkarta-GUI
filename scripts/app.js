@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import { Router, Route, Link, hashHistory } from 'react-router'
 
 import Application from './components/Application';
-import RecordListWrapper from './components/RecordListWrapper';
-import RecordView from './components/RecordView';
-import PlaceView from './components/PlaceView';
-import PersonView from './components/PersonView';
+import RecordListWrapper from './../ISOF-React-modules/components/views/RecordListWrapper';
+import RecordView from './../ISOF-React-modules/components/views/RecordView';
+import PlaceView from './../ISOF-React-modules/components/views/PlaceView';
+import PersonView from './../ISOF-React-modules/components/views/PersonView';
 
 ReactDOM.render(
 	<Router history={hashHistory}>

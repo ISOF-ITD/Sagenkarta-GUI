@@ -2,8 +2,8 @@ import React from 'react';
 import { hashHistory } from 'react-router';
 
 import SearchMenu from './SearchMenu';
-import MapView from './MapView';
-import PopupWindow from './PopupWindow';
+import MapView from './../../ISOF-React-modules/components/views/MapView';
+import PopupWindow from './../../ISOF-React-modules/components/views/PopupWindow';
 
 import routeHelper from './../utils/routeHelper';
 
@@ -12,6 +12,7 @@ export default class Application extends React.Component {
 		super(props);
 
 		this.mapMarkerClick = this.mapMarkerClick.bind(this);
+		this.popupCloseHandler = this.popupCloseHandler.bind(this);
 
 		this.state = {
 			selectedCategory: null,
@@ -23,6 +24,10 @@ export default class Application extends React.Component {
 
 	mapMarkerClick(placeId) {
 		hashHistory.push(routeHelper.createPlacePathFromPlaces(placeId, this.props.location.pathname));
+	}
+
+	popupCloseHandler() {
+		hashHistory.push(routeHelper.createPlacesPathFromPlace(hashHistory.getCurrentLocation().pathname));
 	}
 
 	componentDidMount() {
@@ -64,7 +69,7 @@ export default class Application extends React.Component {
 
 				{below}
 
-				<PopupWindow router={this.context.router}>
+				<PopupWindow router={this.context.router} onClose={this.popupCloseHandler}>
 					{popup}
 				</PopupWindow>
 
