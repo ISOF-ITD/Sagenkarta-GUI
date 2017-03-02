@@ -35,7 +35,7 @@ gulp.task('deploy', function (){
 });
  
 gulp.task('watch', function () {
-	gulp.watch(['./scripts/*.js', './scripts/*/*.js'], ['scripts']);
+	gulp.watch(['./scripts/*.js', './scripts/*/*.js', './ISOF-React-modules/*.js', './ISOF-React-modules/*/*.js', './ISOF-React-modules/*/*/*.js'], ['scripts']);
 });
  
 // When running 'gulp' on the terminal this task will fire.
