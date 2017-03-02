@@ -6,6 +6,7 @@ import MapView from './../../ISOF-React-modules/components/views/MapView';
 import PopupWindow from './../../ISOF-React-modules/components/views/PopupWindow';
 
 import routeHelper from './../utils/routeHelper';
+import WindowScroll from './../../ISOF-React-modules/utils/windowScroll';
 
 export default class Application extends React.Component {
 	constructor(props) {
@@ -13,6 +14,7 @@ export default class Application extends React.Component {
 
 		this.mapMarkerClick = this.mapMarkerClick.bind(this);
 		this.popupCloseHandler = this.popupCloseHandler.bind(this);
+		this.mapUpdateHandler = this.mapUpdateHandler.bind(this);
 
 		this.state = {
 			selectedCategory: null,
@@ -28,6 +30,10 @@ export default class Application extends React.Component {
 
 	popupCloseHandler() {
 		hashHistory.push(routeHelper.createPlacesPathFromPlace(hashHistory.getCurrentLocation().pathname));
+	}
+
+	mapUpdateHandler() {
+		new WindowScroll().scrollToY(0, 1, 'easeInOutSine');
 	}
 
 	componentDidMount() {
@@ -65,7 +71,7 @@ export default class Application extends React.Component {
 
 				</div>
 
-				<MapView searchParams={this.state.params} onMarkerClick={this.mapMarkerClick} />
+				<MapView searchParams={this.state.params} onMarkerClick={this.mapMarkerClick} onMapUpdate={this.mapUpdateHandler} />
 
 				{below}
 
