@@ -157,10 +157,10 @@ export default class CategoryMenu extends React.Component {
 		}
 
 		return (
-			<div ref="container" className="menu-item dropdown-wrapper categories-dropdown">
+			<div ref="container" className={'menu-item dropdown-wrapper categories-dropdown'+(this.props.keepOpen ? ' keep-open' : '')}>
 				<a className="dropdown-link" onClick={this.menuButtonClick}>Kategorier<span className="selected-category">{categoryName}</span></a>
 
-				<div className={'dropdown-container dropdown-list'+(this.state.menuOpen ? ' open' : '')}>
+				<div className={'dropdown-container dropdown-list'+(this.state.menuOpen || this.props.keepOpen ? ' open' : '')}>
 					{items}
 				</div>
 			</div>

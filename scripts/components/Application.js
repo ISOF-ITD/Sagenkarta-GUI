@@ -1,7 +1,7 @@
 import React from 'react';
 import { hashHistory } from 'react-router';
 
-import SearchMenu from './SearchMenu';
+import MapMenu from './MapMenu';
 import MapView from './../../ISOF-React-modules/components/views/MapView';
 import PopupWindow from './../../ISOF-React-modules/components/views/PopupWindow';
 
@@ -15,10 +15,13 @@ export default class Application extends React.Component {
 		this.mapMarkerClick = this.mapMarkerClick.bind(this);
 		this.popupCloseHandler = this.popupCloseHandler.bind(this);
 		this.mapUpdateHandler = this.mapUpdateHandler.bind(this);
+		this.popupWindowHideHandler = this.popupWindowHideHandler.bind(this);
+		this.popupWindowShowHandler = this.popupWindowShowHandler.bind(this);
 
 		this.state = {
 			selectedCategory: null,
-			params: this.props.params
+			params: this.props.params,
+			popupVisible: false
 		};
 
 		window.app = this;
@@ -34,6 +37,22 @@ export default class Application extends React.Component {
 
 	mapUpdateHandler() {
 		new WindowScroll().scrollToY(0, 1, 'easeInOutSine');
+	}
+
+	popupWindowShowHandler() {
+		setTimeout(function() {
+			this.setState({
+				popupVisible: true
+			});
+		}.bind(this), 10);
+	}
+
+	popupWindowHideHandler() {
+		setTimeout(function() {
+			this.setState({
+				popupVisible: false
+			});
+		}.bind(this), 10);
 	}
 
 	componentDidMount() {
@@ -56,26 +75,15 @@ export default class Application extends React.Component {
 			popup
 		} = this.props;
 		return (
-			<div>
+			<div className={'app-container'+(this.state.popupVisible ? ' has-overlay' : '')}>
 
-				<div className="header">
-					
-					<a href="http://sprakochfolkminnen.se" className="logo"></a>
-
-					<div className="site-name">
-						<h1>Sägenkarta</h1>
-						<a href="http://sprakochfolkminnen.se" className="back-link">Tillbaka</a>
-					</div>
-
-					<SearchMenu selectedCategory={this.state.selectedCategory} />
-
-				</div>
-
-				<MapView searchParams={this.state.params} onMarkerClick={this.mapMarkerClick} onMapUpdate={this.mapUpdateHandler} />
+				<MapView searchParams={this.state.params} onMarkerClick={this.mapMarkerClick} onMapUpdate={this.mapUpdateHandler}>
+					<MapMenu selectedCategory={this.state.selectedCategory} />
+				</MapView>
 
 				{below}
 
-				<PopupWindow router={this.context.router} onClose={this.popupCloseHandler}>
+				<PopupWindow onShow={this.popupWindowShowHandler} onHide={this.popupWindowHideHandler} router={this.context.router} onClose={this.popupCloseHandler}>
 					{popup}
 				</PopupWindow>
 
