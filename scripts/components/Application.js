@@ -20,6 +20,10 @@ export default class Application extends React.Component {
 
 		this.state = {
 			selectedCategory: null,
+
+			searchValue: '',
+			searchField: '',
+
 			params: this.props.params,
 			popupVisible: false
 		};
@@ -58,6 +62,12 @@ export default class Application extends React.Component {
 	componentDidMount() {
 		this.setState({
 			selectedCategory: this.props.params.category,
+			searchValue: this.props.params.search,
+			searchField: this.props.params.search_field,
+			searchYearFrom: this.props.params.year_from,
+			searchYearTo: this.props.params.year_to,
+			searchPersonRelation: this.props.params.person_relation,
+			searchGender: this.props.params.gender,
 			params: this.props.params
 		});
 	}
@@ -65,11 +75,23 @@ export default class Application extends React.Component {
 	componentWillReceiveProps(props) {
 		this.setState({
 			selectedCategory: props.params.category,
+			searchValue: props.params.search,
+			searchField: props.params.search_field,
+			searchYearFrom: props.params.year_from,
+			searchYearTo: props.params.year_to,
+			searchPersonRelation: props.params.person_relation,
+			searchGender: props.params.gender,
 			params: props.params
 		});
 	}
 
+	shouldComponentUpdate(nextProps, nextState) {
+		return (JSON.stringify(nextState) != JSON.stringify(this.state));
+	}
+
 	render() {
+		console.log('Application: render');
+
 		const {
 			below,
 			popup
@@ -78,7 +100,14 @@ export default class Application extends React.Component {
 			<div className={'app-container'+(this.state.popupVisible ? ' has-overlay' : '')}>
 
 				<MapView searchParams={this.state.params} onMarkerClick={this.mapMarkerClick} onMapUpdate={this.mapUpdateHandler}>
-					<MapMenu selectedCategory={this.state.selectedCategory} />
+					<MapMenu selectedCategory={this.state.selectedCategory} 
+						searchValue={this.state.searchValue} 
+						searchField={this.state.searchField} 
+						searchYearFrom={this.state.searchYearFrom} 
+						searchYearTo={this.state.searchYearTo} 
+						searchPersonRelation={this.state.searchPersonRelation} 
+						searchGender={this.state.searchGender} 
+					/>
 				</MapView>
 
 				{below}

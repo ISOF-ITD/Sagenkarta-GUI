@@ -61,11 +61,15 @@
 				display: none;
 			}
 
-			&:hover, &.selected {
+			&:hover {
 				background-color: #f4f4f4;
 			}
 
-			&:first-child {
+			&.selected {
+				background-color: #cecece;
+			}
+
+			&:not(:last-child) {
 				border-bottom: 1px solid #ccc;
 			}
 
@@ -119,5 +123,11 @@
 		input {
 			margin-bottom: 0;
 		}
+	}
+}
+
+.leaflet-overlay-pane {
+	>svg {
+		pointer-events: all;
 	}
 }
