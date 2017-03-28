@@ -21,7 +21,6 @@ export default class CategoryMenu extends React.Component {
 	}
 
 	categoryItemClickHandler(event) {
-		console.log('categoryItemClickHandler');
 		hashHistory.push('/places/type/arkiv;tryckt/category/'+event.selectedCategory);
 	}
 
@@ -56,7 +55,7 @@ export default class CategoryMenu extends React.Component {
 
 		return (
 			<div ref="container" className={'heading-list-wrapper'+(this.state.minimized ? ' minimized' : '')}>
-				<div className="list-heading">
+				<div className="list-heading panel-heading">
 					<span className="heading-label">Kategorier<span className="selected-category">
 						{
 							this.refs.categoryList && this.refs.categoryList.state.selectedCategory ? ': '+this.refs.categoryList.state.selectedCategoryName : ''

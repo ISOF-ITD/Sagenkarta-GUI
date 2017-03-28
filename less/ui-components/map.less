@@ -15,7 +15,7 @@
 
 	left: 0;
 	right: 0;
-	top: 177px;
+	top: 0;
 	bottom: 0;
 
 	.map-view {
@@ -25,10 +25,6 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
-
-		@media (max-width: 950px) {
-			top: 120px;
-		}
 	}
 
 	.map-viewmode-menu {
@@ -129,5 +125,64 @@
 .leaflet-overlay-pane {
 	>svg {
 		pointer-events: all;
+	}
+}
+
+.map-progress {
+	position: fixed;
+
+	top: 0;
+	left: 0;
+	right: 0;
+
+	height: 4px;
+
+	z-index: 1400;
+
+	.translate(0, -100%);
+
+	visibility: hidden;
+
+	transition: visibility 0s, transform 400ms ease-in-out;
+
+	.map-loading & {
+		visibility: visible;
+
+		.translate(0, 0);
+	}
+
+	.indicator {
+		position: absolute;
+
+		top: 0;
+		bottom: 0;
+
+		background: @color-red;
+
+		.animation-duration(1.5s);
+		.animation-name(indicatorAnimate);
+		.animation-iteration-count(infinite);
+	}
+}
+
+@keyframes indicatorAnimate {
+	0% {
+		left: 0%;
+		right: 100%;
+	}
+
+	25% {
+		left: 0%;
+		right: 50%;
+	}
+
+	75% {
+		left: 50%;
+		right: 0%;
+	}
+
+	100% {
+		left: 100%;
+		right: 0%;
 	}
 }

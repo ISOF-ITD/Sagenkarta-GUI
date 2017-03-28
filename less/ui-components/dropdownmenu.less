@@ -11,12 +11,17 @@
 		border: 1px solid #ccc;
 		border-radius: 3px;
 
-		background-color: #fff;
 		background-image: url(../img/dropdown-button.png);
 		background-repeat: no-repeat;
 		background-position: right 10px center;
 
 		cursor: pointer;
+
+		.dropdown-direction-up& {
+			position: absolute;
+
+			bottom: 0;
+		}
 	}
 
 	.dropdown-container {
@@ -37,40 +42,70 @@
 
 		z-index: 10;
 
+		.dropdown-direction-up& {
+			bottom: 60px;
+		}
+
 		&.open {
 			display: block;
 		}
 
 		&.dropdown-list {
-			.item {
-				display: block;
+			&.has-header {
+				position: relative;
 
-				padding: 10px 15px;
+				height: 350px;
 
-				color: #333;
-				text-decoration: none;
+				overflow-y: visible;
 
-				border-bottom: 1px solid #ccc;
-
-				cursor: pointer;
-
-				&:hover {
-					text-decoration: underline;
+				.panel-heading {
+					border-bottom: 1px solid #dcdcdc;
+					box-shadow: none;
 				}
 
-				&.selected {
-					color: #fff;
+				.list-container {
+					position: absolute;
 
-					background-color: @color-red-lighter;
+					top: 66px;
+					left: 0;
+					right: 0;
+					bottom: 0;
+
+					overflow-y: auto;
 				}
+			}
 
-				input[type="checkbox"] {
-					margin-bottom: 0;
-					margin-right: 10px;
-				}
+			.list-container {
+				.item {
+					display: block;
 
-				label {
-					margin-bottom: 0;
+					padding: 10px 15px;
+
+					color: #333;
+					text-decoration: none;
+
+					border-bottom: 1px solid #ccc;
+
+					cursor: pointer;
+
+					&:hover {
+						text-decoration: underline;
+					}
+
+					&.selected {
+						color: #fff;
+
+						background-color: @color-red-lighter;
+					}
+
+					input[type="checkbox"] {
+						margin-bottom: 0;
+						margin-right: 10px;
+					}
+
+					label {
+						margin-bottom: 0;
+					}
 				}
 			}
 		}

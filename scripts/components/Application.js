@@ -4,6 +4,7 @@ import { hashHistory } from 'react-router';
 import MapMenu from './MapMenu';
 import MapView from './../../ISOF-React-modules/components/views/MapView';
 import PopupWindow from './../../ISOF-React-modules/components/views/PopupWindow';
+import LocalLibraryView from './LocalLibraryView';
 
 import routeHelper from './../utils/routeHelper';
 import WindowScroll from './../../ISOF-React-modules/utils/windowScroll';
@@ -90,27 +91,25 @@ export default class Application extends React.Component {
 	}
 
 	render() {
-		console.log('Application: render');
-
 		const {
-			below,
 			popup
 		} = this.props;
 		return (
 			<div className={'app-container'+(this.state.popupVisible ? ' has-overlay' : '')}>
 
 				<MapView searchParams={this.state.params} onMarkerClick={this.mapMarkerClick} onMapUpdate={this.mapUpdateHandler}>
+
 					<MapMenu selectedCategory={this.state.selectedCategory} 
 						searchValue={this.state.searchValue} 
 						searchField={this.state.searchField} 
 						searchYearFrom={this.state.searchYearFrom} 
 						searchYearTo={this.state.searchYearTo} 
 						searchPersonRelation={this.state.searchPersonRelation} 
-						searchGender={this.state.searchGender} 
-					/>
-				</MapView>
+						searchGender={this.state.searchGender} />
 
-				{below}
+					<LocalLibraryView />
+
+				</MapView>
 
 				<PopupWindow onShow={this.popupWindowShowHandler} onHide={this.popupWindowHideHandler} router={this.context.router} onClose={this.popupCloseHandler}>
 					{popup}

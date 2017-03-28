@@ -7,8 +7,12 @@ export default class SearchMenu extends React.Component {
 	constructor(props) {
 		super(props);
 
+		this.searchBoxSizeChangeHandler = this.searchBoxSizeChangeHandler.bind(this);
+
 		this.state = {
-			selectedCategory: null
+			selectedCategory: null,
+			expanded: false,
+			advanced: false
 		};
 	}
 
@@ -36,11 +40,16 @@ export default class SearchMenu extends React.Component {
 		});
 	}
 
+	searchBoxSizeChangeHandler(event) {
+		this.setState({
+			expanded: event.expanded,
+			advanced: event.advanced
+		});
+	}
+
 	render() {
-		console.log('MapMenu: render');
-		
 		return (
-			<div className={'menu-wrapper'+(this.refs.searchBox && this.refs.searchBox.state.expanded ? ' menu-expanded' : '')+(this.refs.searchBox && this.refs.searchBox.state.advanced ? ' advanced-menu-view' : '')}>
+			<div className={'menu-wrapper'+(this.state.expanded ? ' menu-expanded' : '')+(this.state.advanced ? ' advanced-menu-view' : '')}>
 
 				<SearchBox ref="searchBox" 
 					searchValue={this.state.searchValue} 
@@ -48,7 +57,8 @@ export default class SearchMenu extends React.Component {
 					searchYearFrom={this.state.searchYearFrom} 
 					searchYearTo={this.state.searchYearTo} 
 					searchPersonRelation={this.state.searchPersonRelation} 
-					searchGender={this.state.searchGender} />
+					searchGender={this.state.searchGender}
+					onSizeChange={this.searchBoxSizeChangeHandler} />
 
 				<CategoryMenu selectedCategory={this.state.selectedCategory} />
 

@@ -21,9 +21,13 @@ export default {
 			type: 'arkiv;tryckt'
 		};
 
+		routeParams.type = routeParams.type || 'arkiv;tryckt';
+
 		if (routeParams.place_id) {
 			delete routeParams.place_id;
 		}
+
+		console.log(routeParams);
 
 		router = new RouteParser(placesRoute);
 

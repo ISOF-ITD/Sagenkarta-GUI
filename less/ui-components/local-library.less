@@ -1,0 +1,26 @@
+.local-library-wrapper {
+	position: fixed;
+
+	bottom: 20px;
+	left: 245px;
+
+	z-index: 1000;
+
+	a.library-open-button {
+		display: block;
+
+		width: 60px;
+		height: 60px;
+
+		margin-bottom: 0;
+
+		background-image: url('../img/icon-star-light.png');
+		background-size: 22px 22px;
+		background-repeat: no-repeat;
+		background-position: center;
+
+		&.has-items {
+			background-image: url('../img/icon-star-red.png');
+		}
+	}
+}

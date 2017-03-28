@@ -26,11 +26,13 @@ export default class SearchBox extends React.Component {
 			expanded: false,
 			advanced: false,
 		};
+
+		window.searchBox = this;
 	}
 
 	inputKeyPressHandler(event) {
 		if (event.key == 'Enter') {
-			hashHistory.push('/places/search/'+this.state.searchValue+'/search_field/'+this.state.searchField);
+			hashHistory.push('/places'+(this.state.searchValue != '' ? '/search/'+this.state.searchValue+'/search_field/'+this.state.searchField : ''));
 		}
 	}
 
@@ -89,21 +91,32 @@ export default class SearchBox extends React.Component {
 	}
 
 	searchBoxClickHandler() {
-		this.setState({
-			expanded: true
-		});
+		if (!this.state.expanded) {
+			this.setState({
+				expanded: true
+			}, function() {
+				if (this.props.onSizeChange) {
+					this.props.onSizeChange(this.state)
+				}
+			}.bind(this));
+			
+			this.refs.searchInput.focus();
+		}
 
-		this.refs.searchInput.focus();
 	}
 
 	toggleAdvanced() {
 		this.setState({
 			advanced: !this.state.advanced
-		});
+		}, function() {
+			if (this.props.onSizeChange) {
+				this.props.onSizeChange(this.state)
+			}
+		}.bind(this));
 	}
 
 	componentDidMount() {
-		window.addEventListener('click', this.windowClickHandler.bind(this));
+		document.getElementById('app').addEventListener('click', this.windowClickHandler.bind(this));
 
 		this.setState({
 			searchValue: this.props.searchValue || '',
@@ -121,7 +134,11 @@ export default class SearchBox extends React.Component {
 		if (!componentEl.contains(event.target) && !this.state.advanced) {
 			this.setState({
 				expanded: false
-			});
+			}, function() {
+				if (this.props.onSizeChange) {
+					this.props.onSizeChange(this.state)
+				}
+			}.bind(this));
 		}
 	}
 
@@ -144,9 +161,12 @@ export default class SearchBox extends React.Component {
 				searchGender: props.searchGender || '',
 				expanded: advandedSearch,
 				advanced: advandedSearch
-			});
+			}, function() {
+				if (this.props.onSizeChange) {
+					this.props.onSizeChange(this.state)
+				}
+			}.bind(this));
 		}
-
 	}
 
 	render() {

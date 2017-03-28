@@ -15,6 +15,7 @@
     "masonry-layout": "^4.1.1",
     "packery": "^2.1.1",
     "proj4leaflet": "^1.0.1",
+    "promise-polyfill": "^6.0.2",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-masonry-component": "^4.4.0",
@@ -23,7 +24,7 @@
     "underscore": "^1.8.3",
     "vinyl-buffer": "^1.0.0",
     "webpack": "^2.2.1",
-    "whatwg-fetch": "^2.0.1"
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "browser-sync": "^2.9.6",
