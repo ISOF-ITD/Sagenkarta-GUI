@@ -1,20 +1,20 @@
-@import "mixins.less";
-@import "skeleton.less";
-@import "leaflet.less";
-@import "MarkerCluster.Default.less";
-@import "nouislider.less";
+@import "../ISOF-React-modules/less/mixins.less";
+@import "../ISOF-React-modules/less/skeleton.less";
+@import "../ISOF-React-modules/less/leaflet.less";
+@import "../ISOF-React-modules/less/MarkerCluster.Default.less";
+@import "../ISOF-React-modules/less/nouislider.less";
 
-@import "ui-components/map.less";
-@import "ui-components/map-ui.less";
-@import "ui-components/popupwindow.less";
+@import "../ISOF-React-modules/less/ui-components/map.less";
+@import "../ISOF-React-modules/less/ui-components/map-ui.less";
+@import "../ISOF-React-modules/less/ui-components/popupwindow.less";
 
-@import "ui-components/mapmenu.less";
-@import "ui-components/dropdownmenu.less";
-@import "ui-components/local-library.less";
+@import "../ISOF-React-modules/less/ui-components/mapmenu.less";
+@import "../ISOF-React-modules/less/ui-components/dropdownmenu.less";
+@import "../ISOF-React-modules/less/ui-components/local-library.less";
 
-@import "minimal-scrollbar.less";
+@import "../ISOF-React-modules/less/minimal-scrollbar.less";
 
-@import "sitevision.less";
+@import "../ISOF-React-modules/less/sitevision.less";
 
 @color-red: #a6192e;
 @color-red-lighter: #d4454c;
@@ -61,8 +61,7 @@ h2 {
 	right: 0;
 	bottom: 0;
 	
-	overflow-y: scroll;
-	overflow-x: hidden;
+	overflow: hidden;
 
 	&.has-overlay {
 		overflow: hidden;
@@ -106,14 +105,33 @@ table {
 	
 	border-radius: 3px;
 	
-	background: @color-gray;
+	background-color: @color-gray;
+	background-repeat: no-repeat;
+	background-position: center 85px;
 	
 	@media (max-width: 750px) {
 		margin-bottom: 0.5rem;
 	}
 
+	&.loading {
+		min-height: 200px;
+
+		background-color: #fff;
+		background-image: url('../img/loader.gif');
+
+		>table {
+			opacity: 0;
+		}
+
+		>.list-pagination {
+			opacity: 0;
+		}
+	}
+
 	table {
 		margin-bottom: 0;
+
+		.transition(opacity 300ms ease-in-out);
 
 		& tr:last-child td {
 			border-bottom: none;

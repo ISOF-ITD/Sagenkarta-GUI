@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { hashHistory } from 'react-router';
 
-import DropdownMenu from './DropdownMenu';
+import DropdownMenu from './../../ISOF-React-modules/components/views/DropdownMenu';
 import CategoryList from './CategoryList';
 
 export default class SearchBox extends React.Component {
@@ -16,6 +16,7 @@ export default class SearchBox extends React.Component {
 		this.searchPersonRelationChangeHandler = this.searchPersonRelationChangeHandler.bind(this);
 		this.searchGenderChangeHandler = this.searchGenderChangeHandler.bind(this);
 		this.searchButtonClickHandler = this.searchButtonClickHandler.bind(this);
+		this.executeSimpleSearch = this.executeSimpleSearch.bind(this);
 
 		this.searchBoxClickHandler = this.searchBoxClickHandler.bind(this);
 		this.toggleAdvanced = this.toggleAdvanced.bind(this);
@@ -32,8 +33,12 @@ export default class SearchBox extends React.Component {
 
 	inputKeyPressHandler(event) {
 		if (event.key == 'Enter') {
-			hashHistory.push('/places'+(this.state.searchValue != '' ? '/search/'+this.state.searchValue+'/search_field/'+this.state.searchField : ''));
+			this.executeSimpleSearch();
 		}
+	}
+
+	executeSimpleSearch() {
+		hashHistory.push('/places'+(this.state.searchValue != '' ? '/search/'+this.state.searchValue+'/search_field/'+this.state.searchField : ''));
 	}
 
 	searchButtonClickHandler() {
@@ -198,7 +203,7 @@ export default class SearchBox extends React.Component {
 					</strong>
 				</div>
 
-				<div className="search-icon"></div>
+				<button className="search-button" onClick={this.executeSimpleSearch}></button>
 
 				<div className="expanded-content">
 

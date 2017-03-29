@@ -16,7 +16,7 @@ export default class CategoryMenu extends React.Component {
 		this.state = {
 			menuOpen: false,
 			selectedCategory: null,
-			minimized: false
+			minimized: document.documentElement.clientWidth < 500 || false
 		};
 	}
 
