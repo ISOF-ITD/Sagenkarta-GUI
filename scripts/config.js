@@ -8,6 +8,6 @@ export default {
 
 	appUrl: 'http://www4.sprakochfolkminnen.se/sagner/',
 	siteUrl: 'http://www.sprakochfolkminnen.se/test-och-utveckling/kartor/sagenkarta.html',
-//	apiUrl: 'http://localhost/Sagenkarta-API/'
+//	apiUrl: 'http://localhost/ISOF/Sagenkarta-API/'
 	apiUrl: 'http://www4.sprakochfolkminnen.se/sagner/api/'
 };
