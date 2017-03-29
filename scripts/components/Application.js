@@ -107,7 +107,7 @@ export default class Application extends React.Component {
 						searchPersonRelation={this.state.searchPersonRelation} 
 						searchGender={this.state.searchGender} />
 
-					<LocalLibraryView />
+					<LocalLibraryView headerText="Mina sägner" />
 
 				</MapView>
 
