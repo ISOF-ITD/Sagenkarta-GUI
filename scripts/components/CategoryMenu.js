@@ -4,6 +4,7 @@ import _ from 'underscore';
 import { hashHistory } from 'react-router';
 
 import CategoryList from './CategoryList';
+import categories from './../utils/sagenkartaCategories';
 
 export default class CategoryMenu extends React.Component {
 	constructor(props) {
@@ -13,6 +14,10 @@ export default class CategoryMenu extends React.Component {
 		this.toggleMinimize = this.toggleMinimize.bind(this);
 		this.categoryItemClickHandler = this.categoryItemClickHandler.bind(this);
 
+		if (window.eventBus) {
+			window.eventBus.addEventListener('application.searchParams', this.receivedSearchParams.bind(this))
+		}
+
 		this.state = {
 			menuOpen: false,
 			selectedCategory: null,
@@ -21,7 +26,7 @@ export default class CategoryMenu extends React.Component {
 	}
 
 	categoryItemClickHandler(event) {
-		hashHistory.push('/places/type/arkiv;tryckt/category/'+event.selectedCategory);
+		hashHistory.push('/places/category/'+event.selectedCategory);
 	}
 
 	menuButtonClick() {
@@ -36,29 +41,24 @@ export default class CategoryMenu extends React.Component {
 		});
 	}
 
-	componentDidMount() {
+
+	receivedSearchParams(event) {
 		this.setState({
-			selectedCategory: this.props.selectedCategory
+			selectedCategory: event.target.selectedCategory
 		});
 	}
 
-	componentWillReceiveProps(props) {
-		if (this.props.selectedCategory !== props.selectedCategory) {
-			this.setState({
-				selectedCategory: props.selectedCategory
-			});
-		}
+	shouldComponentUpdate(nextProps, nextState) {
+		return this.state.selectedCategory != nextState.selectedCategory;
 	}
 
 	render() {
-		var dropdownLink;
-
 		return (
 			<div ref="container" className={'heading-list-wrapper'+(this.state.minimized ? ' minimized' : '')}>
 				<div className="list-heading panel-heading">
 					<span className="heading-label">Kategorier<span className="selected-category">
 						{
-							this.refs.categoryList && this.refs.categoryList.state.selectedCategory ? ': '+this.refs.categoryList.state.selectedCategoryName : ''
+							this.state.selectedCategory ? ': '+categories.getCategoryName(this.state.selectedCategory) : ''
 						}
 					</span></span>
 

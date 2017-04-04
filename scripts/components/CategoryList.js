@@ -2,100 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import _ from 'underscore';
 
-const categories = [
-	{
-		letter: 'a',
-		label: 'Döden och de döda'
-	},
-	{
-		letter: 'b',
-		label: 'Odens jakt'
-	},
-	{
-		letter: 'c',
-		label: 'Skogsväsen'
-	},
-	{
-		letter: 'd',
-		label: 'Vattenväsen'
-	},
-	{
-		letter: 'e',
-		label: 'Bergväsen'
-	},
-	{
-		letter: 'f',
-		label: 'Tomtar'
-	},
-	{
-		letter: 'g',
-		label: 'Jättar'
-	},
-	{
-		letter: 'h',
-		label: 'Troll'
-	},
-	{
-		letter: 'i',
-		label: 'Älvor, vittror och vättar'
-	},
-	{
-		letter: 'j',
-		label: 'Djävulen'
-	},
-	{
-		letter: 'k',
-		label: 'Kloka'
-	},
-	{
-		letter: 'l',
-		label: 'Häxor och  trollkarlar'
-	},
-	{
-		letter: 'm',
-		label: 'Tjuvmjölkande väsen'
-	},
-	{
-		letter: 'n',
-		label: 'Spiritus, dragdocka och bodrag'
-	},
-	{
-		letter: 'o',
-		label: 'Förvandlade'
-	},
-	{
-		letter: 'p',
-		label: 'Djur och natur'
-	},
-	{
-		letter: 'q',
-		label: 'Farsoter'
-	},
-	{
-		letter: 'r',
-		label: 'Kyrkor och kyrkklockor'
-	},
-	{
-		letter: 's',
-		label: 'Skatter'
-	},
-	{
-		letter: 't',
-		label: 'Krig och fejder'
-	},
-	{
-		letter: 'u',
-		label: 'Brott och straff'
-	},
-	{
-		letter: 'v',
-		label: 'Kungar och herremän'
-	},
-	{
-		letter: 'w',
-		label: 'De ovanliga'
-	}
-];
+import categories from './../utils/sagenkartaCategories.js';
 
 export default class CategoryMenu extends React.Component {
 	constructor(props) {
@@ -112,7 +19,7 @@ export default class CategoryMenu extends React.Component {
 	componentDidMount() {
 		this.setState({
 			selectedCategory: this.props.selectedCategory,
-			selectedCategoryName: this.getCategoryName(this.props.selectedCategory)
+			selectedCategoryName: categories.getCategoryName(this.props.selectedCategory)
 		});
 	}
 
@@ -120,15 +27,15 @@ export default class CategoryMenu extends React.Component {
 		if (this.props.selectedCategory !== props.selectedCategory) {
 			this.setState({
 				selectedCategory: props.selectedCategory,
-				selectedCategoryName: this.getCategoryName(props.selectedCategory)
+				selectedCategoryName: categories.getCategoryName(props.selectedCategory)
 			});
 		}
 	}
 
 	itemClickHandler(event) {
 		var selectedCategory = {
-			selectedCategory: categories[event.target.dataset.index].letter,
-			selectedCategoryName: categories[event.target.dataset.index].label
+			selectedCategory: categories.categories[event.target.dataset.index].letter,
+			selectedCategoryName: categories.categories[event.target.dataset.index].label
 		};
 
 		this.setState(selectedCategory);
@@ -138,19 +45,8 @@ export default class CategoryMenu extends React.Component {
 		}
 	}
 
-	getCategoryName(categoryLetter) {
-		if (categoryLetter) {
-			return _.find(categories, function(item) {
-				return item.letter == categoryLetter;
-			}.bind(this)).label;
-		}
-		else {
-			return null;
-		}
-	}
-
 	render() {
-		var items = categories.map(function(item, index) {
+		var items = categories.categories.map(function(item, index) {
 			if (this.props.multipleSelect) {
 				return <label key={index} data-index={index} className="item"><input onChange={this.selectionChangeHandler} type="checkbox"/>{item.label}</label>;
 			}

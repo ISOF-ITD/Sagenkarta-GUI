@@ -21,6 +21,10 @@ export default class SearchBox extends React.Component {
 		this.searchBoxClickHandler = this.searchBoxClickHandler.bind(this);
 		this.toggleAdvanced = this.toggleAdvanced.bind(this);
 
+		if (window.eventBus) {
+			window.eventBus.addEventListener('application.searchParams', this.receivedSearchParams.bind(this))
+		}
+
 		this.state = {
 			searchValue: '',
 			searchField: 'record',
@@ -120,9 +124,20 @@ export default class SearchBox extends React.Component {
 		}.bind(this));
 	}
 
+	receivedSearchParams(event) {
+		this.setState({
+			searchValue: event.target.searchValue || '',
+			searchField: event.target.searchField || 'record',
+			searchYearFrom: event.target.searchYearFrom,
+			searchYearTo: event.target.searchYearTo,
+			searchPersonRelation: event.target.searchPersonRelation || '',
+			searchGender: event.target.searchGender || ''
+		});
+	}
+
 	componentDidMount() {
 		document.getElementById('app').addEventListener('click', this.windowClickHandler.bind(this));
-
+/*
 		this.setState({
 			searchValue: this.props.searchValue || '',
 			searchField: this.props.searchField || 'record',
@@ -131,6 +146,7 @@ export default class SearchBox extends React.Component {
 			searchPersonRelation: this.props.searchPersonRelation || '',
 			searchGender: this.props.searchGender || ''
 		});
+*/
 	}
 
 	windowClickHandler(event) {
@@ -147,6 +163,7 @@ export default class SearchBox extends React.Component {
 		}
 	}
 
+/*
 	componentWillReceiveProps(props) {
 		if (this.props.searchValue !== props.searchValue || 
 			this.props.searchField !== props.searchField || 
@@ -173,6 +190,7 @@ export default class SearchBox extends React.Component {
 			}.bind(this));
 		}
 	}
+*/
 
 	render() {
 		return (

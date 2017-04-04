@@ -52,15 +52,9 @@ export default class SearchMenu extends React.Component {
 			<div className={'menu-wrapper'+(this.state.expanded ? ' menu-expanded' : '')+(this.state.advanced ? ' advanced-menu-view' : '')}>
 
 				<SearchBox ref="searchBox" 
-					searchValue={this.state.searchValue} 
-					searchField={this.state.searchField} 
-					searchYearFrom={this.state.searchYearFrom} 
-					searchYearTo={this.state.searchYearTo} 
-					searchPersonRelation={this.state.searchPersonRelation} 
-					searchGender={this.state.searchGender}
 					onSizeChange={this.searchBoxSizeChangeHandler} />
 
-				<CategoryMenu selectedCategory={this.state.selectedCategory} />
+				<CategoryMenu />
 
 			</div>
 		);

@@ -9,13 +9,16 @@ import LocalLibraryView from './../../ISOF-React-modules/components/views/LocalL
 import routeHelper from './../utils/routeHelper';
 import WindowScroll from './../../ISOF-React-modules/utils/windowScroll';
 
+import EventBus from 'eventbusjs';
+
 export default class Application extends React.Component {
 	constructor(props) {
 		super(props);
 
+		window.eventBus = EventBus;
+
 		this.mapMarkerClick = this.mapMarkerClick.bind(this);
 		this.popupCloseHandler = this.popupCloseHandler.bind(this);
-		this.mapUpdateHandler = this.mapUpdateHandler.bind(this);
 		this.popupWindowHideHandler = this.popupWindowHideHandler.bind(this);
 		this.popupWindowShowHandler = this.popupWindowShowHandler.bind(this);
 
@@ -37,11 +40,14 @@ export default class Application extends React.Component {
 	}
 
 	popupCloseHandler() {
-		hashHistory.push(routeHelper.createPlacesPathFromPlace(hashHistory.getCurrentLocation().pathname));
-	}
-
-	mapUpdateHandler() {
-		new WindowScroll().scrollToY(0, 1, 'easeInOutSine');
+		console.log('popupCloseHandler');
+		console.log(hashHistory.getCurrentLocation());
+		if (hashHistory.getCurrentLocation().pathname.indexOf('record/')) {
+			hashHistory.push(routeHelper.createPlacesPathFromRecord(hashHistory.getCurrentLocation().pathname));
+		}
+		else if (hashHistory.getCurrentLocation().pathname.indexOf('place/')) {
+			hashHistory.push(routeHelper.createPlacesPathFromPlace(hashHistory.getCurrentLocation().pathname));
+		}
 	}
 
 	popupWindowShowHandler() {
@@ -61,6 +67,18 @@ export default class Application extends React.Component {
 	}
 
 	componentDidMount() {
+		if (window.eventBus) {
+			eventBus.dispatch('application.searchParams', {
+				selectedCategory: this.props.params.category,
+				searchValue: this.props.params.search,
+				searchField: this.props.params.search_field,
+				searchYearFrom: this.props.params.year_from,
+				searchYearTo: this.props.params.year_to,
+				searchPersonRelation: this.props.params.person_relation,
+				searchGender: this.props.params.gender,
+			});
+		}
+
 		this.setState({
 			selectedCategory: this.props.params.category,
 			searchValue: this.props.params.search,
@@ -74,6 +92,18 @@ export default class Application extends React.Component {
 	}
 
 	componentWillReceiveProps(props) {
+		if (window.eventBus) {
+			eventBus.dispatch('application.searchParams', {
+				selectedCategory: props.params.category,
+				searchValue: props.params.search,
+				searchField: props.params.search_field,
+				searchYearFrom: props.params.year_from,
+				searchYearTo: props.params.year_to,
+				searchPersonRelation: props.params.person_relation,
+				searchGender: props.params.gender,
+			});
+		}
+
 		this.setState({
 			selectedCategory: props.params.category,
 			searchValue: props.params.search,
@@ -97,15 +127,9 @@ export default class Application extends React.Component {
 		return (
 			<div className={'app-container'+(this.state.popupVisible ? ' has-overlay' : '')}>
 
-				<MapView searchParams={this.state.params} onMarkerClick={this.mapMarkerClick} onMapUpdate={this.mapUpdateHandler}>
+				<MapView searchParams={this.state.params} onMarkerClick={this.mapMarkerClick}>
 
-					<MapMenu selectedCategory={this.state.selectedCategory} 
-						searchValue={this.state.searchValue} 
-						searchField={this.state.searchField} 
-						searchYearFrom={this.state.searchYearFrom} 
-						searchYearTo={this.state.searchYearTo} 
-						searchPersonRelation={this.state.searchPersonRelation} 
-						searchGender={this.state.searchGender} />
+					<MapMenu />
 
 					<LocalLibraryView headerText="Mina sägner" />
 
