@@ -40,8 +40,6 @@ export default class Application extends React.Component {
 	}
 
 	popupCloseHandler() {
-		console.log('popupCloseHandler');
-		console.log(hashHistory.getCurrentLocation());
 		if (hashHistory.getCurrentLocation().pathname.indexOf('record/')) {
 			hashHistory.push(routeHelper.createPlacesPathFromRecord(hashHistory.getCurrentLocation().pathname));
 		}
