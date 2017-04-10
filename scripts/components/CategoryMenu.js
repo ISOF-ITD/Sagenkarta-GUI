@@ -49,7 +49,7 @@ export default class CategoryMenu extends React.Component {
 	}
 
 	shouldComponentUpdate(nextProps, nextState) {
-		return this.state.selectedCategory != nextState.selectedCategory;
+		return this.state.selectedCategory != nextState.selectedCategory || this.state.minimized != nextState.minimized;
 	}
 
 	render() {

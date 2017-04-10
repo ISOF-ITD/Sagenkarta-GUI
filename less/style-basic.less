@@ -11,6 +11,7 @@
 @import "../ISOF-React-modules/less/ui-components/mapmenu.less";
 @import "../ISOF-React-modules/less/ui-components/dropdownmenu.less";
 @import "../ISOF-React-modules/less/ui-components/local-library.less";
+@import "../ISOF-React-modules/less/ui-components/image-overlay.less";
 
 @import "../ISOF-React-modules/less/minimal-scrollbar.less";
 
@@ -59,12 +60,8 @@ h2 {
 }
 
 .app-container {
-	position: absolute;
-	
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
+	height: 100vh;
+	width: 100vw;
 	
 	overflow: hidden;
 
@@ -87,13 +84,6 @@ h2 {
 	box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.4);
 
 	z-index: 1300;
-}
-
-.archive-image {
-	max-width: 100%;
-
-	border-radius: 5px;
-	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
 }
 
 table {
@@ -276,60 +266,6 @@ table.table-responsive {
 				content: none; 
 			}
 		} 
-	}
-}
-
-.overlay-container {
-	.message {
-		position: fixed;
-
-		top: 50%;
-		left: 50%;
-
-		padding: 15px;
-
-		background-color: #E1F3BC;
-
-		border: 1px solid #ccc;
-		border-radius: 5px;
-
-		color: #434C2F;
-		font-weight: bold;
-		font-size: 1.7rem;
-
-		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.24);
-
-		.transform(translate(-50%, -50%));
-	}
-
-	.image-overlay {
-		position: fixed;
-	
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-	
-		background: rgba(78, 78, 78, 0.84);
-	
-		overflow-y: auto;
-
-		z-index: 3000;
-
-		img {
-			position: absolute;
-
-			left: 50%;
-
-			max-width: 80%;
-
-			margin: 20px 0;
-
-			border-radius: 3px;
-			box-shadow: 0 2px 6px #000;
-
-			.transform(translate(-50%));
-		}
 	}
 }
 
