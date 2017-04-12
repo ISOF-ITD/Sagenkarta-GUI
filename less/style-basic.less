@@ -12,8 +12,10 @@
 @import "../ISOF-React-modules/less/ui-components/dropdownmenu.less";
 @import "../ISOF-React-modules/less/ui-components/local-library.less";
 @import "../ISOF-React-modules/less/ui-components/overlay.less";
+@import "../ISOF-React-modules/less/ui-components/audio-player.less";
 
 @import "../ISOF-React-modules/less/minimal-scrollbar.less";
+@import "../ISOF-React-modules/less/tables.less";
 
 @import "../ISOF-React-modules/less/sitevision.less";
 
@@ -60,13 +62,23 @@ h2 {
 }
 
 .app-container {
-	height: 100vh;
-	width: 100vw;
+	position: absolute;
+	
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
 	
 	overflow: hidden;
 
+	.transition(top 300ms ease-in-out);
+
 	&.has-overlay {
 		overflow: hidden;
+	}
+
+	.has-docked-control & {
+		top: 60px;
 	}
 }
 
@@ -84,189 +96,6 @@ h2 {
 	box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.4);
 
 	z-index: 1300;
-}
-
-table {
-	th {
-		font-size: 0.9rem;
-	}
-}
-
-@bp-bart: 48em;
-
-.table-wrapper {
-	padding: 5px 15px;
-	margin-bottom: 2.5rem;
-	
-	border-radius: 3px;
-	
-	background-color: @color-gray;
-	background-repeat: no-repeat;
-	background-position: center 85px;
-	
-	@media (max-width: 750px) {
-		margin-bottom: 0.5rem;
-	}
-
-	&.loading {
-		min-height: 200px;
-
-		background-color: #fff;
-		background-image: url('../img/loader.gif');
-
-		>table {
-			opacity: 0;
-		}
-
-		>.list-pagination {
-			opacity: 0;
-		}
-	}
-
-	table {
-		margin-bottom: 0;
-
-		.transition(opacity 300ms ease-in-out);
-
-		& tr:last-child td {
-			border-bottom: none;
-		}
-
-		a {
-			color: @color-red;
-			text-decoration: none;
-
-			&:hover {
-				text-decoration: underline;
-			}
-		}
-	}
-
-	hr {
-		margin: 20px -15px !important;
-	}
-}
-
-table.table-responsive {
-	margin-bottom: 0;
-
-	& tr:last-child td {
-		border-bottom: none;
-	}
-
- 	thead {
-		// Accessibly hide <thead> on narrow viewports
-		position: absolute;
-		clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-		clip: rect(1px, 1px, 1px, 1px);
-		padding: 0;
-		border: 0;
-		height: 1px; 
-		width: 1px; 
-		overflow: hidden;
-
-		th {
-			padding-left: 0;
-		}
-		
-		@media (min-width: @bp-bart) {
-			// Unhide <thead> on wide viewports
-			position: relative;
-			clip: auto;
-			height: auto;
-			width: auto;
-			overflow: auto;
-		}
-	}
-	
-	// Set these items to display: block for narrow viewports
-	tbody,
-	tr,
-	th,
-	td {
-		display: block;
-
-		white-space: normal;
-	}
-	
-	tr {	 
-		@media (min-width: @bp-bart) {
-			display: table-row; 
-		}
-	}
-	
-	th,
-	td {
-		@media (min-width: @bp-bart) {
-			// Undo display: block 
-			display: table-cell;
-		}
-	}
-	
-	tbody {
-		@media (min-width: @bp-bart) {
-			// Undo display: block 
-			display: table-row-group; 
-		}
-		
-		tr {
-			border-bottom: 2px solid #e1e1e1;
-			
-			@media (min-width: @bp-bart) {
-				// Undo display: block 
-				display: table-row;
-
-				border-bottom: none;
-			}
-			
-			&:last-of-type {
-				margin-bottom: 0;
-
-				border-bottom: none;
-			}
-			
-			&:nth-of-type(even) {
-				@media (min-width: @bp-bart) {
-				}
-			}
-		}
-		
-		td {
-			padding-left: 0;
-
-			min-height: 50px;
-
-			box-sizing: border-box;
-
-			&:first-child {
-				font-size: 1.1rem;
-				font-weight: bold;
-				padding-left: 0;
-			}
-
-			@media (min-width: @bp-bart) {
-				&:first-child {
-					font-size: 1rem;
-					font-weight: normal;
-				}
-			}
-		}
-
-		td[data-title]:before {
-			content: attr(data-title);
-
-			float: left;
-
-			margin-right: 15px;
-
-			font-weight: bold;
-
-			@media (min-width: @bp-bart) {
-				// Don’t show data-title labels 
-				content: none; 
-			}
-		} 
-	}
 }
 
 .list-pagination {
