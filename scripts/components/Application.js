@@ -6,6 +6,7 @@ import MapView from './../../ISOF-React-modules/components/views/MapView';
 import PopupWindow from './../../ISOF-React-modules/components/views/PopupWindow';
 import LocalLibraryView from './../../ISOF-React-modules/components/views/LocalLibraryView';
 import ImageOverlay from './../../ISOF-React-modules/components/views/ImageOverlay';
+import FeedbackOverlay from './../../ISOF-React-modules/components/views/FeedbackOverlay';
 
 import routeHelper from './../utils/routeHelper';
 import WindowScroll from './../../ISOF-React-modules/utils/windowScroll';
@@ -141,6 +142,8 @@ export default class Application extends React.Component {
 				<div className="map-progress"><div className="indicator"></div></div>
 
 				<ImageOverlay />
+
+				<FeedbackOverlay />
 
 			</div>
 		);

@@ -244,9 +244,7 @@ export default class SearchBox extends React.Component {
 
 					</div>
 
-					<div>
-						<a onClick={this.toggleAdvanced}>Avancerad sökning</a>
-					</div>
+					<a className="advanced-button" onClick={this.toggleAdvanced}>Avancerad sökning</a>
 
 					<div className="advanced-content">
 
