@@ -8,6 +8,13 @@ import RecordView from './../ISOF-React-modules/components/views/RecordView';
 import PlaceView from './../ISOF-React-modules/components/views/PlaceView';
 import PersonView from './../ISOF-React-modules/components/views/PersonView';
 
+// IE 11 backwards compatibility
+import 'whatwg-fetch';
+import Promise from 'promise-polyfill'; 
+if (!window.Promise) {
+	window.Promise = Promise;
+}
+
 ReactDOM.render(
 	<Router history={hashHistory}>
 		<Redirect from="/" to="/places"/>
