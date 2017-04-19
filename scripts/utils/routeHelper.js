@@ -48,8 +48,6 @@ export default {
 	createSearchRoute(params) {
 		var router = new RouteParser(searchRoute);
 
-		console.log(router.reverse(params));
-
 		return router.reverse(params);
 	}
 }
