@@ -2,6 +2,7 @@ export default {
 	localLibraryName: 'sagenkarta_library',
 
 	apiRecordsType: 'arkiv;tryckt',
+	fetchOnlyCategories: true,
 
 	imageUrl: 'http://www4.sprakochfolkminnen.se/Folkminnen/Svenska_sagor_filer/',
 	audioUrl: 'http://www4.sprakochfolkminnen.se/Folkminnen/Svenska_sagor_filer/inspelningar/',
