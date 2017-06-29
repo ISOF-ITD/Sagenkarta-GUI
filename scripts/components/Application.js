@@ -3,7 +3,7 @@ import { hashHistory } from 'react-router';
 
 import MapMenu from './MapMenu';
 import MapView from './../../ISOF-React-modules/components/views/MapView';
-import PopupWindow from './../../ISOF-React-modules/components/views/PopupWindow';
+import PopupWindow from './../../ISOF-React-modules/components/controls/PopupWindow';
 import LocalLibraryView from './../../ISOF-React-modules/components/views/LocalLibraryView';
 import ImageOverlay from './../../ISOF-React-modules/components/views/ImageOverlay';
 import FeedbackOverlay from './../../ISOF-React-modules/components/views/FeedbackOverlay';

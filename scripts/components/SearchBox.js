@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { hashHistory } from 'react-router';
 
-import DropdownMenu from './../../ISOF-React-modules/components/views/DropdownMenu';
+import DropdownMenu from './../../ISOF-React-modules/components/controls/DropdownMenu';
 import CategoryList from './CategoryList';
 
 export default class SearchBox extends React.Component {
