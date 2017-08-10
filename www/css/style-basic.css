@@ -1572,9 +1572,29 @@ there.
 }
 .menu-wrapper .nordic-switch-wrapper {
   position: relative;
+  padding: 0;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   z-index: 1400;
+}
+.menu-wrapper .nordic-switch-wrapper a {
+  display: inline-block;
+  width: 50%;
+  padding: 12px;
+  box-sizing: border-box;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  -webkit-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+.menu-wrapper .nordic-switch-wrapper a.selected {
+  color: #fff;
+  background: #d4454c;
+}
+.menu-wrapper .nordic-switch-wrapper a:hover {
+  text-decoration: underline;
 }
 .menu-wrapper .search-box {
   position: absolute;
