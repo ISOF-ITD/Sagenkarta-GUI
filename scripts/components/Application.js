@@ -19,6 +19,10 @@ export default class Application extends React.Component {
 
 		window.eventBus = EventBus;
 
+		window.applicationSettings = {
+			includeNordic: false
+		};
+
 		this.mapMarkerClick = this.mapMarkerClick.bind(this);
 		this.popupCloseHandler = this.popupCloseHandler.bind(this);
 		this.popupWindowHideHandler = this.popupWindowHideHandler.bind(this);

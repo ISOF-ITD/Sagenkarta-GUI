@@ -10,10 +10,15 @@ import PersonView from './../ISOF-React-modules/components/views/PersonView';
 
 // IE 11 backwards compatibility
 import 'whatwg-fetch';
-import Promise from 'promise-polyfill'; 
+import Promise from 'promise-polyfill';
+
 if (!window.Promise) {
 	window.Promise = Promise;
 }
+
+import Lang from './../ISOF-React-modules/lang/Lang';
+console.log(Lang);
+window.l = Lang.get;
 
 ReactDOM.render(
 	<Router history={hashHistory}>

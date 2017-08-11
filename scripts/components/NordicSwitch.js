@@ -16,7 +16,13 @@ export default class NordicSwitch extends React.Component {
 	menuButtonClick(event) {
 		this.setState({
 			selected: event.currentTarget.dataset.value
-		});
+		}, function() {
+			window.applicationSettings.includeNordic = !window.applicationSettings.includeNordic;
+
+			if (window.eventBus) {
+				window.eventBus.dispatch('nordicLegendsUpdate');
+			}
+		}.bind(this));
 	}
 
 	render() {
