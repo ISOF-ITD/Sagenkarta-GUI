@@ -88,7 +88,11 @@ export default class Application extends React.Component {
 			searchPersonRelation: this.props.params.person_relation,
 			searchGender: this.props.params.gender,
 			params: this.props.params
-		});
+		}, function() {
+			setTimeout(function() {
+				document.body.classList.add('app-initialized');
+			}.bind(this), 1000);
+		}.bind(this));
 	}
 
 	componentWillReceiveProps(props) {
