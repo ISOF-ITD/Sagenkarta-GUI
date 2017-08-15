@@ -19,7 +19,7 @@ var path = require('path');
 var gulpif = require('gulp-if');
 
 
-var production = true;
+var production = false;
 
 if (production) {
 	process.env.NODE_ENV = 'production';
@@ -44,7 +44,7 @@ gulp.task('deploy', function (){
  
 gulp.task('watch', function () {
 	gulp.watch(['./scripts/*.js', './scripts/*/*.js', './ISOF-React-modules/*.js', './ISOF-React-modules/*/*.js', './ISOF-React-modules/*/*/*.js'], ['scripts']);
-	gulp.watch(['./less/*.less', './less/*/*.less', './ISOF-React-modules/less/*.less', './ISOF-React-modules/less/*/*.less'], ['less']);
+	gulp.watch(['./less/*.less', './less/*/*.less', './ISOF-React-modules/less/*.less', './ISOF-React-modules/less/*/*.less', './ISOF-React-modules/less/*/*/*.less'], ['less']);
 });
  
 // When running 'gulp' on the terminal this task will fire.

@@ -40,6 +40,10 @@ html, body {
 	width: 100vw;
 
 	overflow: hidden;
+
+	@media print {
+		overflow: visible;
+	}
 }
 
 body {
@@ -74,6 +78,12 @@ h2 {
 
 	&.has-overlay {
 		overflow: hidden;
+
+		@media print {
+			position: initial;
+
+			overflow: visible;
+		}
 	}
 
 	.has-docked-control & {
@@ -102,6 +112,10 @@ h2 {
 	
 	button {
 		margin-right: 10px;
+
+		@media print {
+			display: none;
+		}
 	}
 }
 
@@ -111,4 +125,10 @@ audio::-webkit-media-controls {
 audio::-webkit-media-controls-enclosure {
     width: calc(100% + 12px);
     margin-left: auto;
+}
+
+@media print {
+	a {
+		text-decoration: none !important;
+	}
 }
