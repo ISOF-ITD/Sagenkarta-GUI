@@ -56,7 +56,7 @@ export default class CategoryMenu extends React.Component {
 		return (
 			<div ref="container" className={'heading-list-wrapper'+(this.state.minimized ? ' minimized' : '')}>
 				<div className="list-heading panel-heading">
-					<span className="heading-label">Kategorier<span className="selected-category">
+					<span className="heading-label">{l('Kategorier')}<span className="selected-category">
 						{
 							this.state.selectedCategory ? ': '+categories.getCategoryName(this.state.selectedCategory) : ''
 						}
