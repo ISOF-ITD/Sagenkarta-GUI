@@ -28,6 +28,8 @@ export default class Application extends React.Component {
 		this.popupWindowHideHandler = this.popupWindowHideHandler.bind(this);
 		this.popupWindowShowHandler = this.popupWindowShowHandler.bind(this);
 
+		this.languageChangedHandler = this.languageChangedHandler.bind(this);
+
 		this.state = {
 			selectedCategory: null,
 
@@ -70,6 +72,11 @@ export default class Application extends React.Component {
 		}.bind(this), 10);
 	}
 
+	languageChangedHandler() {
+		console.log('language changed');
+		this.forceUpdate();
+	}
+
 	componentDidMount() {
 		if (window.eventBus) {
 			eventBus.dispatch('application.searchParams', {
@@ -81,6 +88,8 @@ export default class Application extends React.Component {
 				searchPersonRelation: this.props.params.person_relation,
 				searchGender: this.props.params.gender,
 			});
+
+			window.eventBus.addEventListener('Lang.setCurrentLang', this.languageChangedHandler);
 		}
 
 		this.setState({
@@ -135,7 +144,7 @@ export default class Application extends React.Component {
 
 					<MapMenu />
 
-					<LocalLibraryView headerText="Mina sägner" />
+					<LocalLibraryView headerText={l('Mina sägner')} />
 
 				</MapView>
 

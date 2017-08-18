@@ -21,6 +21,8 @@ export default class SearchBox extends React.Component {
 		this.searchBoxClickHandler = this.searchBoxClickHandler.bind(this);
 		this.toggleAdvanced = this.toggleAdvanced.bind(this);
 
+		this.languageChangedHandler = this.languageChangedHandler.bind(this);
+
 		if (window.eventBus) {
 			window.eventBus.addEventListener('application.searchParams', this.receivedSearchParams.bind(this))
 		}
@@ -135,8 +137,17 @@ export default class SearchBox extends React.Component {
 		});
 	}
 
+	languageChangedHandler() {
+		console.log('language changed');
+		this.forceUpdate();
+	}
+
 	componentDidMount() {
 		document.getElementById('app').addEventListener('click', this.windowClickHandler.bind(this));
+
+		if (window.eventBus) {
+			window.eventBus.addEventListener('Lang.setCurrentLang', this.languageChangedHandler)
+		}
 /*
 		this.setState({
 			searchValue: this.props.searchValue || '',
@@ -147,6 +158,12 @@ export default class SearchBox extends React.Component {
 			searchGender: this.props.searchGender || ''
 		});
 */
+	}
+
+	componentWillUnmount() {
+		if (window.eventBus) {
+			window.eventBus.removeEventListener('Lang.setCurrentLang', this.languageChangedHandler)
+		}
 	}
 
 	windowClickHandler(event) {
@@ -211,7 +228,7 @@ export default class SearchBox extends React.Component {
 							this.state.searchField == 'record' ? 'Innehåll: ' :
 							this.state.searchField == 'person' ? 'Person: ' :
 							this.state.searchField == 'place' ? 'Ort: ' : ''
-						) : 'Sök'
+						) : l('Sök')
 					}
 					<strong>
 						{
@@ -301,7 +318,7 @@ export default class SearchBox extends React.Component {
 
 						<hr/>
 
-						<button className="button-primary" onClick={this.searchButtonClickHandler}>Sök</button>
+						<button className="button-primary" onClick={this.searchButtonClickHandler}>{l('Sök')}</button>
 
 					</div>
 

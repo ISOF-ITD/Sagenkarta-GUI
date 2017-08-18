@@ -17,7 +17,7 @@ if (!window.Promise) {
 }
 
 import Lang from './../ISOF-React-modules/lang/Lang';
-console.log(Lang);
+window.Lang = Lang;
 window.l = Lang.get;
 
 ReactDOM.render(
