@@ -17,17 +17,23 @@ export default class Application extends React.Component {
 	constructor(props) {
 		super(props);
 
+		// Lägg till globalt eventBus variable för att skicka data mellan moduler
 		window.eventBus = EventBus;
 
+		/* Global applicationSettings, includeNordic = false betyder att vi inkluderar inte norskt material som standard
+			includeNordic används av ISOF-React-modules/components/collections/MapCollection.js och
+			ISOF-React-modules/components/collections/RecordsCollection.js i Nordisk_sägenkarta branchen.
+		*/
 		window.applicationSettings = {
 			includeNordic: false
 		};
 
+		// Bind event handlers till "this" (själva Application instance)
 		this.mapMarkerClick = this.mapMarkerClick.bind(this);
 		this.popupCloseHandler = this.popupCloseHandler.bind(this);
 		this.popupWindowHideHandler = this.popupWindowHideHandler.bind(this);
 		this.popupWindowShowHandler = this.popupWindowShowHandler.bind(this);
-
+ 
 		this.languageChangedHandler = this.languageChangedHandler.bind(this);
 
 		this.state = {
@@ -39,8 +45,6 @@ export default class Application extends React.Component {
 			params: this.props.params,
 			popupVisible: false
 		};
-
-		window.app = this;
 	}
 
 	mapMarkerClick(placeId) {
@@ -48,10 +52,10 @@ export default class Application extends React.Component {
 	}
 
 	popupCloseHandler() {
-		if (hashHistory.getCurrentLocation().pathname.indexOf('record/')) {
+		if (hashHistory.getCurrentLocation().pathname.indexOf('record/') > -1) {
 			hashHistory.push(routeHelper.createPlacesPathFromRecord(hashHistory.getCurrentLocation().pathname));
 		}
-		else if (hashHistory.getCurrentLocation().pathname.indexOf('place/')) {
+		else if (hashHistory.getCurrentLocation().pathname.indexOf('place/') > -1) {
 			hashHistory.push(routeHelper.createPlacesPathFromPlace(hashHistory.getCurrentLocation().pathname));
 		}
 	}
@@ -86,7 +90,7 @@ export default class Application extends React.Component {
 				searchYearFrom: this.props.params.year_from,
 				searchYearTo: this.props.params.year_to,
 				searchPersonRelation: this.props.params.person_relation,
-				searchGender: this.props.params.gender,
+				searchGender: this.props.params.gender
 			});
 
 			window.eventBus.addEventListener('Lang.setCurrentLang', this.languageChangedHandler);
