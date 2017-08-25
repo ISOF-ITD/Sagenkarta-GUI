@@ -15,7 +15,10 @@ export default class SearchBox extends React.Component {
 		this.searchFieldChangeHandler = this.searchFieldChangeHandler.bind(this);
 		this.searchPersonRelationChangeHandler = this.searchPersonRelationChangeHandler.bind(this);
 		this.searchGenderChangeHandler = this.searchGenderChangeHandler.bind(this);
+		this.searchCategoriesChangeHandler = this.searchCategoriesChangeHandler.bind(this);
+
 		this.searchButtonClickHandler = this.searchButtonClickHandler.bind(this);
+
 		this.executeSimpleSearch = this.executeSimpleSearch.bind(this);
 
 		this.searchBoxClickHandler = this.searchBoxClickHandler.bind(this);
@@ -48,12 +51,18 @@ export default class SearchBox extends React.Component {
 	}
 
 	searchButtonClickHandler() {
+		console.log(this.state);
 		hashHistory.push(
 			'/places'+
 			(
 				this.state.searchValue != '' ?
 					'/search/'+this.state.searchValue+
 					'/search_field/'+this.state.searchField
+				: ''
+			)+
+			(
+				this.state.searchCategories != '' ?
+					'/category/'+this.state.searchCategories.join(';')
 				: ''
 			)+
 			(
@@ -88,7 +97,7 @@ export default class SearchBox extends React.Component {
 	searchPersonRelationChangeHandler(event) {
 		if (event.target.value != this.state.searchPersonRelation) {
 			this.setState({
-				searchPersonRelation: event.target.value == 'both' ? null : event.target.value
+				searchPersonRelation: event.target.value == 'both' ? '' : event.target.value
 			});
 		}
 	}
@@ -96,9 +105,15 @@ export default class SearchBox extends React.Component {
 	searchGenderChangeHandler(event) {
 		if (event.target.value != this.state.searchGender) {
 			this.setState({
-				searchGender: event.target.value == 'both' ? null : event.target.value
+				searchGender: event.target.value == 'both' ? '' : event.target.value
 			});
 		}
+	}
+
+	searchCategoriesChangeHandler(event) {
+		this.setState({
+			searchCategories: event
+		});
 	}
 
 	searchBoxClickHandler() {
@@ -269,7 +284,7 @@ export default class SearchBox extends React.Component {
 
 						<h4>Kategorier</h4>
 						<DropdownMenu label="Avgränsa till kategorier">
-							<CategoryList multipleSelect="true" />
+							<CategoryList multipleSelect="true" onChange={this.searchCategoriesChangeHandler} />
 						</DropdownMenu>
 
 						<hr/>

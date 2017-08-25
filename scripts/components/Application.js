@@ -58,6 +58,9 @@ export default class Application extends React.Component {
 		else if (hashHistory.getCurrentLocation().pathname.indexOf('place/') > -1) {
 			hashHistory.push(routeHelper.createPlacesPathFromPlace(hashHistory.getCurrentLocation().pathname));
 		}
+		else {
+			hashHistory.push('places');
+		}
 	}
 
 	popupWindowShowHandler() {

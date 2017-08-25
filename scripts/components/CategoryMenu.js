@@ -26,7 +26,12 @@ export default class CategoryMenu extends React.Component {
 	}
 
 	categoryItemClickHandler(event) {
-		hashHistory.push('/places/category/'+event.selectedCategory);
+		if (event.selectedCategory == this.state.selectedCategory) {
+			hashHistory.push('/places');
+		}
+		else {
+			hashHistory.push('/places/category/'+event.selectedCategory);
+		}
 	}
 
 	menuButtonClick() {
