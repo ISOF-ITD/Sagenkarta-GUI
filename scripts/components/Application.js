@@ -7,6 +7,7 @@ import PopupWindow from './../../ISOF-React-modules/components/controls/PopupWin
 import LocalLibraryView from './../../ISOF-React-modules/components/views/LocalLibraryView';
 import ImageOverlay from './../../ISOF-React-modules/components/views/ImageOverlay';
 import FeedbackOverlay from './../../ISOF-React-modules/components/views/FeedbackOverlay';
+import PopupNotificationMessage from './../../ISOF-React-modules/components/controls/PopupNotificationMessage';
 
 import routeHelper from './../utils/routeHelper';
 import WindowScroll from './../../ISOF-React-modules/utils/windowScroll';
@@ -145,9 +146,8 @@ export default class Application extends React.Component {
 	}
 
 	render() {
-		const {
-			popup
-		} = this.props;
+		var popup = this.props.popup;
+		console.log(popup);
 		return (
 			<div className={'app-container'+(this.state.popupVisible ? ' has-overlay' : '')}>
 
@@ -168,6 +168,8 @@ export default class Application extends React.Component {
 				<ImageOverlay />
 
 				<FeedbackOverlay />
+
+				<PopupNotificationMessage />
 
 			</div>
 		);
