@@ -3,7 +3,7 @@ import { hashHistory } from 'react-router';
 
 import MapMenu from './MapMenu';
 import MapView from './../../ISOF-React-modules/components/views/MapView';
-import PopupWindow from './../../ISOF-React-modules/components/controls/PopupWindow';
+import RoutePopupWindow from './../../ISOF-React-modules/components/controls/RoutePopupWindow';
 import LocalLibraryView from './../../ISOF-React-modules/components/views/LocalLibraryView';
 import ImageOverlay from './../../ISOF-React-modules/components/views/ImageOverlay';
 import FeedbackOverlay from './../../ISOF-React-modules/components/views/FeedbackOverlay';
@@ -147,7 +147,7 @@ export default class Application extends React.Component {
 
 	render() {
 		var popup = this.props.popup;
-		console.log(popup);
+
 		return (
 			<div className={'app-container'+(this.state.popupVisible ? ' has-overlay' : '')}>
 
@@ -159,9 +159,9 @@ export default class Application extends React.Component {
 
 				</MapView>
 
-				<PopupWindow onShow={this.popupWindowShowHandler} onHide={this.popupWindowHideHandler} router={this.context.router} onClose={this.popupCloseHandler}>
+				<RoutePopupWindow onShow={this.popupWindowShowHandler} onHide={this.popupWindowHideHandler} router={this.context.router} onClose={this.popupCloseHandler}>
 					{popup}
-				</PopupWindow>
+				</RoutePopupWindow>
 
 				<div className="map-progress"><div className="indicator"></div></div>
 

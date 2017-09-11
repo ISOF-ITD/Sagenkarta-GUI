@@ -46,7 +46,6 @@ export default class CategoryMenu extends React.Component {
 		});
 	}
 
-
 	receivedSearchParams(event) {
 		this.setState({
 			selectedCategory: event.target.selectedCategory
