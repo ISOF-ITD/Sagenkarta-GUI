@@ -7,7 +7,9 @@ import RoutePopupWindow from './../../ISOF-React-modules/components/controls/Rou
 import LocalLibraryView from './../../ISOF-React-modules/components/views/LocalLibraryView';
 import ImageOverlay from './../../ISOF-React-modules/components/views/ImageOverlay';
 import FeedbackOverlay from './../../ISOF-React-modules/components/views/FeedbackOverlay';
+import TranscriptionOverlay from './../../ISOF-React-modules/components/views/TranscriptionOverlay';
 import PopupNotificationMessage from './../../ISOF-React-modules/components/controls/PopupNotificationMessage';
+import OverlayWindow from './../../ISOF-React-modules/components/controls/OverlayWindow';
 
 import routeHelper from './../utils/routeHelper';
 import WindowScroll from './../../ISOF-React-modules/utils/windowScroll';
@@ -34,6 +36,7 @@ export default class Application extends React.Component {
 		this.popupCloseHandler = this.popupCloseHandler.bind(this);
 		this.popupWindowHideHandler = this.popupWindowHideHandler.bind(this);
 		this.popupWindowShowHandler = this.popupWindowShowHandler.bind(this);
+		this.introOverlayCloseButtonClickHandler = this.introOverlayCloseButtonClickHandler.bind(this);
  
 		this.languageChangedHandler = this.languageChangedHandler.bind(this);
 
@@ -80,6 +83,14 @@ export default class Application extends React.Component {
 		}.bind(this), 10);
 	}
 
+	introOverlayCloseButtonClickHandler() {
+		eventBus.dispatch('overlay.hide');
+
+		if (this.state.neverShowIntro) {
+			localStorage.setItem('neverShowIntro', true);
+		}
+	}
+
 	languageChangedHandler() {
 		console.log('language changed');
 		this.forceUpdate();
@@ -87,7 +98,7 @@ export default class Application extends React.Component {
 
 	componentDidMount() {
 		if (window.eventBus) {
-			eventBus.dispatch('application.searchParams', {
+			window.eventBus.dispatch('application.searchParams', {
 				selectedCategory: this.props.params.category,
 				searchValue: this.props.params.search,
 				searchField: this.props.params.search_field,
@@ -98,6 +109,12 @@ export default class Application extends React.Component {
 			});
 
 			window.eventBus.addEventListener('Lang.setCurrentLang', this.languageChangedHandler);
+
+			setTimeout(function() {
+				if (!localStorage.getItem('neverShowIntro')) {
+					eventBus.dispatch('overlay.intro');
+				}
+			}, 2500);
 		}
 
 		this.setState({
@@ -114,6 +131,12 @@ export default class Application extends React.Component {
 				document.body.classList.add('app-initialized');
 			}.bind(this), 1000);
 		}.bind(this));
+
+		setTimeout(function() {
+			this.setState({
+				overlayWindowHtml: window.document.getElementsByClassName('sv-text-portlet-content').length > 0 ? window.document.getElementsByClassName('sv-text-portlet-content')[0].innerHTML : null
+			});
+		}.bind(this), 10);
 	}
 
 	componentWillReceiveProps(props) {
@@ -166,10 +189,16 @@ export default class Application extends React.Component {
 				<div className="map-progress"><div className="indicator"></div></div>
 
 				<ImageOverlay />
-
 				<FeedbackOverlay />
-
+				<TranscriptionOverlay />
 				<PopupNotificationMessage />
+				<OverlayWindow title="Velkommen till sägenkartan" htmlContent={this.state.overlayWindowHtml}>
+					<div>
+						<hr className="margin-bottom-35"/>
+						<button className="button-primary margin-bottom-0" onClick={this.introOverlayCloseButtonClickHandler}>Stäng</button>
+						<label className="margin-top-10 margin-bottom-0 font-weight-normal u-pull-right"><input className="margin-bottom-0" onChange={function(event) {this.setState({neverShowIntro: event.currentTarget.checked})}.bind(this)} type="checkbox" /> Klicka här för att inte visa den rutan igen.</label>
+					</div>
+				</OverlayWindow>
 
 			</div>
 		);
