@@ -51,7 +51,6 @@ export default class SearchBox extends React.Component {
 	}
 
 	searchButtonClickHandler() {
-		console.log(this.state);
 		hashHistory.push(
 			'/places'+
 			(

@@ -4,6 +4,8 @@ export default {
 	apiRecordsType: 'arkiv;tryckt',
 	fetchOnlyCategories: true,
 
+	country: 'sweden',
+
 	imageUrl: 'http://www4.sprakochfolkminnen.se/Folkminnen/Svenska_sagor_filer/',
 	audioUrl: 'http://www4.sprakochfolkminnen.se/Folkminnen/Svenska_sagor_filer/inspelningar/',
 
