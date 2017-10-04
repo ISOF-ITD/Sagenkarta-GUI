@@ -40,6 +40,8 @@ export default class Application extends React.Component {
  
 		this.languageChangedHandler = this.languageChangedHandler.bind(this);
 
+		this.languageChangedHandler = this.languageChangedHandler.bind(this);
+
 		this.state = {
 			selectedCategory: null,
 

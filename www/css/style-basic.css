@@ -1692,6 +1692,23 @@ there.
   border-bottom-right-radius: 0;
   overflow: hidden;
   z-index: 1400;
+  -webkit-transition: all 400ms ease-in-out;
+  -o-transition: all 400ms ease-in-out;
+  transition: all 400ms ease-in-out;
+  opacity: 0;
+  -webkit-transform: translateY(50px);
+  -moz-transform: translateY(50px);
+  -ms-transform: translateY(50px);
+  transform: translateY(50px);
+}
+.app-initialized .menu-wrapper .nordic-switch-wrapper {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+  -webkit-transition-delay: 900ms;
+  transition-delay: 900ms;
 }
 .menu-wrapper .nordic-switch-wrapper a {
   display: inline-block;
@@ -1714,7 +1731,7 @@ there.
 }
 .menu-wrapper .search-box {
   position: absolute;
-  top: 42px;
+  top: 0;
   right: 0;
   left: 0;
   z-index: 1500;
@@ -1904,7 +1921,7 @@ there.
 }
 .menu-wrapper .heading-list-wrapper {
   position: absolute;
-  top: 132px;
+  top: 90px;
   bottom: 0;
   right: 0;
   width: 100%;
