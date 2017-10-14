@@ -1,7 +1,7 @@
 export default {
 	localLibraryName: 'sagenkarta_library',
 
-	apiRecordsType: 'arkiv;tryckt',
+	apiRecordsType: 'arkiv,tryckt',
 	fetchOnlyCategories: true,
 
 	country: 'sweden',
@@ -11,6 +11,10 @@ export default {
 
 	appUrl: 'http://www4.sprakochfolkminnen.se/sagner/',
 	siteUrl: 'http://www.sprakochfolkminnen.se/om-oss/kartor/sagenkartan.html',
+
+//	apiUrl: 'http://uuc-isof004-t.its.uu.se/sagendatabas/api/'
+	apiUrl: 'http://localhost:8000/sagenkarta/'
+
 //	apiUrl: 'http://localhost/ISOF/Sagenkarta-API/'
-	apiUrl: 'http://www4.sprakochfolkminnen.se/sagner/api/'
+//	apiUrl: 'http://www4.sprakochfolkminnen.se/sagner/api/'
 };

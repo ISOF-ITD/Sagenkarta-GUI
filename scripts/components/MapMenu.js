@@ -49,10 +49,10 @@ export default class SearchMenu extends React.Component {
 	}
 
 	render() {
-//		<NordicSwitch />
-
 		return (
 			<div className={'menu-wrapper'+(this.state.expanded ? ' menu-expanded' : '')+(this.state.advanced ? ' advanced-menu-view' : '')}>
+
+				{/*<NordicSwitch />*/}
 
 				<SearchBox ref="searchBox" 
 					onSizeChange={this.searchBoxSizeChangeHandler} />
