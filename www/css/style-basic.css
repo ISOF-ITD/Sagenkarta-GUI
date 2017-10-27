@@ -2800,10 +2800,12 @@ body {
   background-repeat: no-repeat;
 }
 header {
+  visibility: hidden;
   background: transparent !important;
   pointer-events: none;
 }
 header .logo {
+  visibility: visible;
   position: absolute;
   top: 5px;
   left: 20px;
@@ -2834,7 +2836,7 @@ header #Meny1 + ul {
   /*
 		Vi döljer menyn tills vi har flera kartor än bara sägenkartan
 		*/
-  display: none;
+  visibility: visible;
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -2882,6 +2884,7 @@ header #Meny1 + ul > li a.vitxbrodtext {
   text-decoration: underline;
 }
 header #Meny + ul {
+  visibility: visible;
   position: fixed;
   top: 20px;
   right: 20px;
@@ -2935,9 +2938,6 @@ header #Meny + ul > li a {
   content: "Dold modul - klicka för att editera";
   display: block;
 }
-.sv-text-portlet-content > * {
-  display: none !important;
-}
 .sv-text-portlet-content.mce-edit-focus:before {
   display: none;
 }
@@ -2949,9 +2949,6 @@ header #Meny + ul > li a {
 }
 #Publiceringsdatum + span {
   display: none;
-}
-.sv-column-6 {
-  display: none !important;
 }
 html,
 body {

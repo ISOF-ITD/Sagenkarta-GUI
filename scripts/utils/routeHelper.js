@@ -14,7 +14,7 @@ export default {
 		routeParams.place_id = placeId;
 		router = new RouteParser(placeRoute);
 
-		return router.reverse(routeParams);
+		return router.reverse(routeParams) || '';
 	},
 
 	createPlacesPathFromPlace(placePath) {
@@ -28,7 +28,7 @@ export default {
 
 		router = new RouteParser(placesRoute);
 
-		return router.reverse(routeParams);
+		return router.reverse(routeParams) || '';
 	},
 
 	createPlacesPathFromRecord(recordId) {
@@ -42,12 +42,12 @@ export default {
 
 		router = new RouteParser(placesRoute);
 
-		return router.reverse(routeParams);
+		return router.reverse(routeParams) || '';
 	},
 
 	createSearchRoute(params) {
 		var router = new RouteParser(searchRoute);
 
-		return router.reverse(params);
+		return router.reverse(params) || '';
 	}
 }
