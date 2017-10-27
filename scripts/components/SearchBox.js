@@ -35,6 +35,7 @@ export default class SearchBox extends React.Component {
 			searchField: 'record',
 			expanded: false,
 			advanced: false,
+			searchCategories: []
 		};
 
 		window.searchBox = this;
@@ -60,7 +61,7 @@ export default class SearchBox extends React.Component {
 				: ''
 			)+
 			(
-				this.state.searchCategories != '' ?
+				this.state.searchCategories.length > 0 ?
 					'/category/'+this.state.searchCategories.join(';')
 				: ''
 			)+
