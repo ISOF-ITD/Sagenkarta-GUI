@@ -10,9 +10,12 @@ import FeedbackOverlay from './../../ISOF-React-modules/components/views/Feedbac
 import TranscriptionOverlay from './../../ISOF-React-modules/components/views/TranscriptionOverlay';
 import PopupNotificationMessage from './../../ISOF-React-modules/components/controls/PopupNotificationMessage';
 import OverlayWindow from './../../ISOF-React-modules/components/controls/OverlayWindow';
+import SitevisionContent from './../../ISOF-React-modules/components/controls/SitevisionContent';
 
 import routeHelper from './../utils/routeHelper';
 import WindowScroll from './../../ISOF-React-modules/utils/windowScroll';
+
+import config from './../config.js';
 
 import EventBus from 'eventbusjs';
 
@@ -194,7 +197,8 @@ export default class Application extends React.Component {
 				<FeedbackOverlay />
 				<TranscriptionOverlay />
 				<PopupNotificationMessage />
-				<OverlayWindow title="Velkommen till sägenkartan" htmlContent={this.state.overlayWindowHtml}>
+				<OverlayWindow title="Velkommen till sägenkartan">
+					<SitevisionContent url={config.startPageUrl} disableScriptExecution={true} />
 					<div>
 						<hr className="margin-bottom-35"/>
 						<button className="button-primary margin-bottom-0" onClick={this.introOverlayCloseButtonClickHandler}>Stäng</button>

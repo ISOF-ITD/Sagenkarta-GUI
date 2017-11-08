@@ -2944,6 +2944,10 @@ header #Meny + ul > li a {
 .sv-text-portlet-content.mce-edit-focus > * {
   display: block !important;
 }
+.sv-carousel {
+  user-select: none;
+  outline: none;
+}
 @viewport {
   zoom: 0.75;
 }

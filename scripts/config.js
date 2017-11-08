@@ -1,10 +1,15 @@
 export default {
 	localLibraryName: 'sagenkarta_library',
 
-	apiRecordsType: 'arkiv,tryckt',
-	fetchOnlyCategories: true,
+	requiredParams: {
+		type: 'arkiv,tryckt',
+		country: 'sweden',
+		only_categories: 'true'
+	},
 
 	country: 'sweden',
+
+	startPageUrl: 'http://www.sprakochfolkminnen.se/om-oss/kartor/sagenkartan/om-sagenkartan---kort.html',
 
 	imageUrl: 'http://www4.sprakochfolkminnen.se/Folkminnen/Svenska_sagor_filer/',
 	audioUrl: 'http://www4.sprakochfolkminnen.se/Folkminnen/Svenska_sagor_filer/inspelningar/',
