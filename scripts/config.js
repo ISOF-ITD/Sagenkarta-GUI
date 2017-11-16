@@ -3,8 +3,11 @@ export default {
 
 	requiredParams: {
 		type: 'arkiv,tryckt',
-		country: 'sweden',
 		only_categories: 'true'
+	},
+
+	siteOptions: {
+
 	},
 
 	country: 'sweden',

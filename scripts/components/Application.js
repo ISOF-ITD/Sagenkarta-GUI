@@ -57,10 +57,13 @@ export default class Application extends React.Component {
 	}
 
 	mapMarkerClick(placeId) {
+		// När användaren klickar på en prick, lägger till #place/[id] till url:et,
+		// detta kommer att hanteras av application router
 		hashHistory.push(routeHelper.createPlacePathFromPlaces(placeId, this.props.location.pathname));
 	}
 
 	popupCloseHandler() {
+		// Lägg till rätt route när användaren stänger popuprutan
 		if (hashHistory.getCurrentLocation().pathname.indexOf('record/') > -1) {
 			hashHistory.push(routeHelper.createPlacesPathFromRecord(hashHistory.getCurrentLocation().pathname));
 		}
@@ -73,6 +76,8 @@ export default class Application extends React.Component {
 	}
 
 	popupWindowShowHandler() {
+		// När popup-rutan är synlig, lägg till popupVisible: true till state,
+		// i render() lägger detta till has-overlay class till <div id="app" />
 		setTimeout(function() {
 			this.setState({
 				popupVisible: true
@@ -81,6 +86,7 @@ export default class Application extends React.Component {
 	}
 
 	popupWindowHideHandler() {
+		// När popup-rutan är döljd, lägg till popupVisible: false till state
 		setTimeout(function() {
 			this.setState({
 				popupVisible: false
@@ -89,19 +95,22 @@ export default class Application extends React.Component {
 	}
 
 	introOverlayCloseButtonClickHandler() {
+		// Skickar overlay.hide via globala eventBus, OverlayWindow tar emot det
 		eventBus.dispatch('overlay.hide');
 
+		// Registrerar till localStorage om användaren har valt att inte visa intro igen
 		if (this.state.neverShowIntro) {
 			localStorage.setItem('neverShowIntro', true);
 		}
 	}
 
 	languageChangedHandler() {
-		console.log('language changed');
+		// force render när språk har ändras
 		this.forceUpdate();
 	}
 
 	componentDidMount() {
+		// Skickar alla sök-parametrar via global eventBus
 		if (window.eventBus) {
 			window.eventBus.dispatch('application.searchParams', {
 				selectedCategory: this.props.params.category,
@@ -115,6 +124,7 @@ export default class Application extends React.Component {
 
 			window.eventBus.addEventListener('Lang.setCurrentLang', this.languageChangedHandler);
 
+			// Väntar två och halv sekund för att visa intro, om användaren inte har valt att visa den inte igen
 			setTimeout(function() {
 				if (!localStorage.getItem('neverShowIntro')) {
 					eventBus.dispatch('overlay.intro');
@@ -133,18 +143,16 @@ export default class Application extends React.Component {
 			params: this.props.params
 		}, function() {
 			setTimeout(function() {
+				// Väntar en sekund, lägger till app-initialized till body class,
+				// detta kör css transition som animerar gränssnittet i början
 				document.body.classList.add('app-initialized');
 			}.bind(this), 1000);
 		}.bind(this));
-
-		setTimeout(function() {
-			this.setState({
-				overlayWindowHtml: window.document.getElementsByClassName('sv-text-portlet-content').length > 0 ? window.document.getElementsByClassName('sv-text-portlet-content')[0].innerHTML : null
-			});
-		}.bind(this), 10);
 	}
 
 	componentWillReceiveProps(props) {
+		// När application tar emot parametrar från url:et, skicka dem via eventBus
+		// MapView, RecordsList och sökfält tar emot dem och hämtar data
 		if (window.eventBus) {
 			eventBus.dispatch('application.searchParams', {
 				selectedCategory: props.params.category,
@@ -170,10 +178,12 @@ export default class Application extends React.Component {
 	}
 
 	shouldComponentUpdate(nextProps, nextState) {
+		// Checkar om gränssnittet skulle uppdateras med att jämföra nya parametrar med förre parametrar
 		return (JSON.stringify(nextState) != JSON.stringify(this.state));
 	}
 
 	render() {
+		// Innehåll av RoutePopupWindow, kommer från application route i app.js
 		var popup = this.props.popup;
 
 		return (

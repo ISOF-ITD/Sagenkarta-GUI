@@ -23,7 +23,7 @@ import Lang from './../ISOF-React-modules/lang/Lang';
 window.Lang = Lang;
 window.l = Lang.get;
 
-// Initalisera React.js Router
+// Initalisera React.js Router som bestämmer vilken "sida" användaren ser baserad på url:et
 ReactDOM.render(
 	<Router history={hashHistory}>
 		<Redirect from="/" to="/places"/>

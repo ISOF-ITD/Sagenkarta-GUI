@@ -1484,15 +1484,49 @@ there.
   margin-bottom: 1.5rem;
 }
 .popup-wrapper .popup-content-wrapper .page-content .archive-image {
+  cursor: pointer;
+}
+.popup-wrapper .popup-content-wrapper .page-content .archive-image .pdf-icon {
+  width: 100%;
+  height: 115px;
+  background-color: #fafbfc;
+  background-image: url('../img/icon-pdf.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 55px 55px;
+  border: 1px solid #eaeaea;
+  border-radius: 4px;
+}
+.popup-wrapper .popup-content-wrapper .page-content .archive-image img {
   max-width: 100%;
   border-radius: 5px;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
 }
 @media print {
-  .popup-wrapper .popup-content-wrapper .page-content .archive-image {
+  .popup-wrapper .popup-content-wrapper .page-content .archive-image img {
     max-width: 50%;
   }
+}
+.popup-wrapper .popup-content-wrapper .page-content .archive-image .media-title {
+  margin: 5px 0 15px 0;
+  text-align: center;
+}
+.popup-wrapper .popup-content-wrapper .page-content .pdf-viewer {
+  margin-bottom: 30px;
+}
+.popup-wrapper .popup-content-wrapper .page-content .pdf-viewer object {
+  max-height: 90vh;
+}
+.popup-wrapper .popup-content-wrapper .page-content .columns.twelve .archive-image {
+  display: inline-block;
+  margin: 0 15px 15px 0;
+  vertical-align: top;
+}
+.popup-wrapper .popup-content-wrapper .page-content .columns.twelve .archive-image .pdf-icon {
+  width: 115px;
+}
+.popup-wrapper .popup-content-wrapper .page-content .columns.twelve .archive-image img {
+  max-width: 150px;
 }
 .popup-wrapper .popup-content-wrapper .page-content .fb-share-button {
   margin-top: 20px;
@@ -2323,6 +2357,13 @@ there.
     margin: 0;
   }
 }
+.overlay-container .pdf-viewer {
+  position: absolute;
+  top: 80px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+}
 .overlay-container .overlay-window {
   position: absolute;
   left: 50%;
@@ -2459,9 +2500,18 @@ there.
   top: 3px;
   left: 10px;
 }
+.global-audio-player-wrapper .global-audio-player .player-time {
+  position: absolute;
+  top: 10px;
+  left: 60px;
+  font-size: 1.4rem;
+}
+.global-audio-player-wrapper .global-audio-player .player-time .small {
+  font-size: 1rem;
+}
 .global-audio-player-wrapper .global-audio-player .player-content {
   position: absolute;
-  left: 60px;
+  left: 120px;
   white-space: nowrap;
 }
 .play-button {
@@ -2791,7 +2841,7 @@ table.table-responsive tbody td[data-title]:before {
 }
 td .play-button {
   position: relative;
-  top: 5px;
+  top: 2px;
 }
 body {
   background-color: #f5f5f5;

@@ -228,13 +228,11 @@ export default class SearchBox extends React.Component {
 		return (
 			<div ref="container" 
 				onClick={this.searchBoxClickHandler} 
-				className={'search-box map-floating-control'+(this.state.expanded ? ' expanded' : '')+(this.state.advanced ? ' advanced' : '')}
-			>
+				className={'search-box map-floating-control'+(this.state.expanded ? ' expanded' : '')+(this.state.advanced ? ' advanced' : '')} >
 				<input ref="searchInput" type="text" 
 					value={this.state.searchValue} 
 					onChange={this.searchValueChangeHandler} 
-					onKeyPress={this.inputKeyPressHandler}
-				></input>
+					onKeyPress={this.inputKeyPressHandler} />
 				
 				<div className="search-label">
 					{
