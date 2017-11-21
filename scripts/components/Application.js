@@ -34,7 +34,7 @@ export default class Application extends React.Component {
 			includeNordic: false
 		};
 
-		// Bind event handlers till "this" (själva Application instance)
+		// Bind all event handlers to this (the actual component) to make component variables available inside the functions
 		this.mapMarkerClick = this.mapMarkerClick.bind(this);
 		this.popupCloseHandler = this.popupCloseHandler.bind(this);
 		this.popupWindowHideHandler = this.popupWindowHideHandler.bind(this);

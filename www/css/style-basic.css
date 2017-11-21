@@ -1484,6 +1484,7 @@ there.
   margin-bottom: 1.5rem;
 }
 .popup-wrapper .popup-content-wrapper .page-content .archive-image {
+  max-width: 100%;
   cursor: pointer;
 }
 .popup-wrapper .popup-content-wrapper .page-content .archive-image .pdf-icon {

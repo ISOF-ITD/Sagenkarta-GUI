@@ -9,23 +9,20 @@ export default class SearchBox extends React.Component {
 	constructor(props) {
 		super(props);
 
+		// Bind all event handlers to this (the actual component) to make component variables available inside the functions
 		this.inputKeyPressHandler = this.inputKeyPressHandler.bind(this);
-
 		this.searchValueChangeHandler = this.searchValueChangeHandler.bind(this);
 		this.searchFieldChangeHandler = this.searchFieldChangeHandler.bind(this);
 		this.searchPersonRelationChangeHandler = this.searchPersonRelationChangeHandler.bind(this);
 		this.searchGenderChangeHandler = this.searchGenderChangeHandler.bind(this);
 		this.searchCategoriesChangeHandler = this.searchCategoriesChangeHandler.bind(this);
-
 		this.searchButtonClickHandler = this.searchButtonClickHandler.bind(this);
-
 		this.executeSimpleSearch = this.executeSimpleSearch.bind(this);
-
 		this.searchBoxClickHandler = this.searchBoxClickHandler.bind(this);
 		this.toggleAdvanced = this.toggleAdvanced.bind(this);
-
 		this.languageChangedHandler = this.languageChangedHandler.bind(this);
 
+		// Lyssna efter event från eventBus som kommer om url:et ändras med nya sökparams
 		if (window.eventBus) {
 			window.eventBus.addEventListener('application.searchParams', this.receivedSearchParams.bind(this))
 		}
@@ -48,10 +45,12 @@ export default class SearchBox extends React.Component {
 	}
 
 	executeSimpleSearch() {
+		// Lägg sökroute till url:et, kommer hanteras via router objected i app.js och skickas till MapView och RecordList
 		hashHistory.push('/places'+(this.state.searchValue != '' ? '/search/'+this.state.searchValue+'/search_field/'+this.state.searchField : ''));
 	}
 
 	searchButtonClickHandler() {
+		// Lägg mer komplicerad sökroute till url:et, kommer hanteras via router objected i app.js och skickas till MapView och RecordList
 		hashHistory.push(
 			'/places'+
 			(
@@ -78,6 +77,7 @@ export default class SearchBox extends React.Component {
 		);
 	}
 
+	// Lägg nytt värde till state om valt värde ändras i sökfält, kategorilisten eller andra sökfält
 	searchValueChangeHandler(event) {
 		if (event.target.value != this.state.searchValue) {
 			this.setState({
@@ -142,6 +142,7 @@ export default class SearchBox extends React.Component {
 	}
 
 	receivedSearchParams(event) {
+		// Fick parametrar från eventBus, uppdaterar sökfält
 		this.setState({
 			searchValue: event.target.searchValue || '',
 			searchField: event.target.searchField || 'record',
@@ -153,7 +154,7 @@ export default class SearchBox extends React.Component {
 	}
 
 	languageChangedHandler() {
-		console.log('language changed');
+		// Gränssnitt tvingas uppdateras om språk ändras
 		this.forceUpdate();
 	}
 
@@ -163,16 +164,6 @@ export default class SearchBox extends React.Component {
 		if (window.eventBus) {
 			window.eventBus.addEventListener('Lang.setCurrentLang', this.languageChangedHandler)
 		}
-/*
-		this.setState({
-			searchValue: this.props.searchValue || '',
-			searchField: this.props.searchField || 'record',
-			searchYearFrom: this.props.searchYearFrom,
-			searchYearTo: this.props.searchYearTo,
-			searchPersonRelation: this.props.searchPersonRelation || '',
-			searchGender: this.props.searchGender || ''
-		});
-*/
 	}
 
 	componentWillUnmount() {
@@ -194,35 +185,6 @@ export default class SearchBox extends React.Component {
 			}.bind(this));
 		}
 	}
-
-/*
-	componentWillReceiveProps(props) {
-		if (this.props.searchValue !== props.searchValue || 
-			this.props.searchField !== props.searchField || 
-			this.props.searchYearFrom !== props.searchYearFrom || 
-			this.props.searchYearTo !== props.searchYearTo || 
-			this.props.searchPersonRelation !== props.searchPersonRelation || 
-			this.props.searchGender !== props.searchGender
-		) {
-			var advandedSearch = props.searchYearFrom || props.searchYearTo || props.searchPersonRelation || props.searchGender;
-
-			this.setState({
-				searchValue: props.searchValue || '',
-				searchField: props.searchField || 'record',
-				searchYearFrom: props.searchYearFrom,
-				searchYearTo: props.searchYearTo,
-				searchPersonRelation: props.searchPersonRelation || '',
-				searchGender: props.searchGender || '',
-				expanded: advandedSearch,
-				advanced: advandedSearch
-			}, function() {
-				if (this.props.onSizeChange) {
-					this.props.onSizeChange(this.state)
-				}
-			}.bind(this));
-		}
-	}
-*/
 
 	render() {
 		return (
