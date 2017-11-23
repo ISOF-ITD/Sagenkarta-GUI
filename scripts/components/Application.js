@@ -119,7 +119,8 @@ export default class Application extends React.Component {
 				searchYearFrom: this.props.params.year_from,
 				searchYearTo: this.props.params.year_to,
 				searchPersonRelation: this.props.params.person_relation,
-				searchGender: this.props.params.gender
+				searchGender: this.props.params.gender,
+				includeNordic: this.props.params.nordic
 			});
 
 			window.eventBus.addEventListener('Lang.setCurrentLang', this.languageChangedHandler);
@@ -162,6 +163,7 @@ export default class Application extends React.Component {
 				searchYearTo: props.params.year_to,
 				searchPersonRelation: props.params.person_relation,
 				searchGender: props.params.gender,
+				includeNordic: props.params.nordic
 			});
 		}
 

@@ -2,7 +2,7 @@ import React from 'react';
 
 import CategoryMenu from './CategoryMenu';
 import SearchBox from './SearchBox';
-//import NordicSwitch from './NordicSwitch';
+import NordicSwitch from './NordicSwitch';
 
 export default class SearchMenu extends React.Component {
 	constructor(props) {
@@ -52,7 +52,7 @@ export default class SearchMenu extends React.Component {
 		return (
 			<div className={'menu-wrapper'+(this.state.expanded ? ' menu-expanded' : '')+(this.state.advanced ? ' advanced-menu-view' : '')}>
 
-				{/*<NordicSwitch />*/}
+				<NordicSwitch />
 
 				<SearchBox ref="searchBox" 
 					onSizeChange={this.searchBoxSizeChangeHandler} />

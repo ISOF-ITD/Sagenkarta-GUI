@@ -21,16 +21,17 @@ export default class CategoryMenu extends React.Component {
 		this.state = {
 			menuOpen: false,
 			selectedCategory: null,
+			includeNordic: false,
 			minimized: document.documentElement.clientWidth < 500 || false
 		};
 	}
 
 	categoryItemClickHandler(event) {
 		if (event.selectedCategory == this.state.selectedCategory) {
-			hashHistory.push('/places');
+			hashHistory.push('/places'+(this.state.includeNordic ? '/nordic/true' : ''));
 		}
 		else {
-			hashHistory.push('/places/category/'+event.selectedCategory);
+			hashHistory.push('/places/category/'+event.selectedCategory+(this.state.includeNordic ? '/nordic/true' : ''));
 		}
 	}
 
@@ -48,7 +49,8 @@ export default class CategoryMenu extends React.Component {
 
 	receivedSearchParams(event) {
 		this.setState({
-			selectedCategory: event.target.selectedCategory
+			selectedCategory: event.target.selectedCategory,
+			includeNordic: event.target.includeNordic
 		});
 	}
 

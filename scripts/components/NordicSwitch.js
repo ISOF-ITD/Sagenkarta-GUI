@@ -8,27 +8,35 @@ export default class NordicSwitch extends React.Component {
 
 		this.menuButtonClick = this.menuButtonClick.bind(this);
 
+		if (window.eventBus) {
+			window.eventBus.addEventListener('application.searchParams', this.receivedSearchParams.bind(this))
+		}
+
 		this.state = {
-			selected: 'swedish'
+			includeNordic: false,
+			selectedCategory: null
 		};
+	}
+
+	receivedSearchParams(event) {
+		this.setState({
+			selectedCategory: event.target.selectedCategory,
+			includeNordic: event.target.includeNordic
+		});
 	}
 
 	menuButtonClick(event) {
 		this.setState({
-			selected: event.currentTarget.dataset.value
+			includeNordic: event.currentTarget.dataset.value == 'true'
 		}, function() {
-			window.applicationSettings.includeNordic = !window.applicationSettings.includeNordic;
-
-			if (window.eventBus) {
-				window.eventBus.dispatch('nordicLegendsUpdate');
-			}
+			hashHistory.push('/places'+(this.state.selectedCategory ? '/category/'+this.state.selectedCategory : '')+(this.state.includeNordic ? '/nordic/true' : ''));
 		}.bind(this));
 	}
 
 	render() {
 		return <div className="nordic-switch-wrapper map-floating-control">
-			<a onClick={this.menuButtonClick} data-value="swedish" className={this.state.selected == 'swedish' ? 'selected' : ''}>Svenska sägner</a>
-			<a onClick={this.menuButtonClick} data-value="nordic" className={this.state.selected == 'nordic' ? 'selected' : ''}>Nordiska sägner</a>
+			<a onClick={this.menuButtonClick} data-value="false" className={!this.state.includeNordic ? 'selected' : ''}>Svenska sägner</a>
+			<a onClick={this.menuButtonClick} data-value="true" className={this.state.includeNordic ? 'selected' : ''}>Nordiska sägner</a>
 		</div>;
 	}
 

@@ -1766,7 +1766,7 @@ there.
 }
 .menu-wrapper .search-box {
   position: absolute;
-  top: 0;
+  top: 42px;
   right: 0;
   left: 0;
   z-index: 1500;
@@ -1956,7 +1956,7 @@ there.
 }
 .menu-wrapper .heading-list-wrapper {
   position: absolute;
-  top: 90px;
+  top: 132px;
   bottom: 0;
   right: 0;
   width: 100%;
