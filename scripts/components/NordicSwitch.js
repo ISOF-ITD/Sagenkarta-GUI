@@ -10,6 +10,7 @@ export default class NordicSwitch extends React.Component {
 
 		if (window.eventBus) {
 			window.eventBus.addEventListener('application.searchParams', this.receivedSearchParams.bind(this))
+			window.eventBus.dispatch('nordicLegendsUpdate');
 		}
 
 		this.state = {

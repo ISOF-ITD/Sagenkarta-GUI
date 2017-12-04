@@ -1286,6 +1286,18 @@ there.
     right: 0%;
   }
 }
+.leaflet-control .map-location-icon {
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-image: url('../img/icon-locate.png');
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.following.leaflet-control .map-location-icon {
+  background-image: url('../img/icon-locate-following.png');
+}
 @media print {
   .leaflet-control {
     display: none;
@@ -1759,7 +1771,7 @@ there.
 }
 .menu-wrapper .nordic-switch-wrapper a.selected {
   color: #fff;
-  background: #d4454c;
+  background: #a6192e;
 }
 .menu-wrapper .nordic-switch-wrapper a:hover {
   text-decoration: underline;
@@ -2983,7 +2995,7 @@ header #Meny + ul > li a {
   top: 160px;
 }
 .map-viewmode-menu {
-  top: 301px !important;
+  top: 348px !important;
 }
 .sv-editing-mode .sv-text-portlet-content:before {
   content: "Dold modul - klicka för att editera";
