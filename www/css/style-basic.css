@@ -210,7 +210,7 @@ input[type="submit"].button-primary,
 input[type="reset"].button-primary,
 input[type="button"].button-primary {
   color: #FFF;
-  background-color: #a6192e;
+  background-color: #000;
   border: none;
 }
 .button.button-primary:hover,
@@ -224,7 +224,7 @@ input[type="submit"].button-primary:focus,
 input[type="reset"].button-primary:focus,
 input[type="button"].button-primary:focus {
   color: #FFF;
-  background-color: #d4454c;
+  background-color: #636363;
 }
 .button.button-gray,
 button.button-gray,
@@ -1492,8 +1492,15 @@ there.
     top: 80px;
   }
 }
+.popup-wrapper .popup-content-wrapper .page-content h2 {
+  font-weight: normal;
+}
+.popup-wrapper .popup-content-wrapper .page-content h3 {
+  font-weight: normal;
+}
 .popup-wrapper .popup-content-wrapper .page-content p {
   margin-bottom: 1.5rem;
+  line-height: 1.5rem;
 }
 .popup-wrapper .popup-content-wrapper .page-content .archive-image {
   max-width: 100%;
