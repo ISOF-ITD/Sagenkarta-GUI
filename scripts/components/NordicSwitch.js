@@ -10,7 +10,6 @@ export default class NordicSwitch extends React.Component {
 
 		if (window.eventBus) {
 			window.eventBus.addEventListener('application.searchParams', this.receivedSearchParams.bind(this))
-			window.eventBus.dispatch('nordicLegendsUpdate');
 		}
 
 		this.state = {
@@ -30,6 +29,10 @@ export default class NordicSwitch extends React.Component {
 		this.setState({
 			includeNordic: event.currentTarget.dataset.value == 'true'
 		}, function() {
+			if (window.eventBus) {
+				window.eventBus.dispatch('nordicLegendsUpdate', null, {includeNordic: this.state.includeNordic});
+			}
+	
 			hashHistory.push('/places'+(this.state.selectedCategory ? '/category/'+this.state.selectedCategory : '')+(this.state.includeNordic ? '/nordic/true' : ''));
 		}.bind(this));
 	}
