@@ -3,7 +3,7 @@
 *	Author: Jean-Pierre Sierens
 *	===========================================================================
 */
- 
+
 // declarations, dependencies
 // ----------------------------------------------------------------------------
 var gulp = require('gulp');
@@ -19,12 +19,12 @@ var path = require('path');
 var gulpif = require('gulp-if');
 
 
-var production = false;
+var production = true;
 
 if (production) {
 	process.env.NODE_ENV = 'production';
 }
- 
+
 // Gulp tasks
 // ----------------------------------------------------------------------------
 gulp.task('scripts', function () {
@@ -41,17 +41,17 @@ gulp.task('less', function(){
 gulp.task('deploy', function (){
 	bundleApp(true);
 });
- 
+
 gulp.task('watch', function () {
 	gulp.watch(['./scripts/*.js', './scripts/*/*.js', './ISOF-React-modules/*.js', './ISOF-React-modules/*/*.js', './ISOF-React-modules/*/*/*.js'], ['scripts']);
 	gulp.watch(['./less/*.less', './less/*/*.less', './ISOF-React-modules/less/*.less', './ISOF-React-modules/less/*/*.less', './ISOF-React-modules/less/*/*/*.less'], ['less']);
 });
- 
+
 // When running 'gulp' on the terminal this task will fire.
 // It will start watching for changes in every .js file.
 // If there's a change, the task 'scripts' defined above will fire.
 gulp.task('default', ['scripts', 'less', 'watch']);
- 
+
 // Private Functions
 // ----------------------------------------------------------------------------
 function bundleApp(isProduction) {
@@ -61,7 +61,7 @@ function bundleApp(isProduction) {
     	entries: './scripts/app.js',
     	debug: !isProduction
   	})
- 
+
   	appBundler
   		// transform ES6 and JSX to ES5 with babelify
 	  	.transform("babelify", {presets: ["es2015", "react"]})
