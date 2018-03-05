@@ -110,6 +110,9 @@ export default class Application extends React.Component {
 	}
 
 	componentDidMount() {
+		if (this.props.params.nordic) {
+			window.eventBus.dispatch('nordicLegendsUpdate', null, {includeNordic: true});			
+		}
 		// Skickar alla sök-parametrar via global eventBus
 		if (window.eventBus) {
 			window.eventBus.dispatch('application.searchParams', {
