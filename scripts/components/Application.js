@@ -136,6 +136,7 @@ export default class Application extends React.Component {
 			}, 2500);
 		}
 
+		// Spara alla sök-parametrar till state
 		this.setState({
 			selectedCategory: this.props.params.category,
 			searchValue: this.props.params.search,

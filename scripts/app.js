@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, Link, hashHistory, Redirect } from 'react-router'
+import { Router, Route, Link, hashHistory, Redirect } from 'react-router';
 
 import Application from './components/Application';
 import RecordListWrapper from './../ISOF-React-modules/components/views/RecordListWrapper';
@@ -57,7 +57,8 @@ import Lang from './../ISOF-React-modules/lang/Lang';
 window.Lang = Lang;
 window.l = Lang.get;
 
-// Initalisera React.js Router som bestämmer vilken "sida" användaren ser baserad på url:et
+// Initalisera React.js Router som bestämmer vilken "sida" användaren ser baserad på url:et 
+// "component" pekar mot importerade componenter (se högst uppe i denna fil)
 ReactDOM.render(
 	<Router history={hashHistory}>
 		<Redirect from="/" to="/places"/>
