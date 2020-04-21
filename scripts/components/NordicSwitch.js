@@ -40,8 +40,8 @@ export default class NordicSwitch extends React.Component {
 
 	render() {
 		return <div className="nordic-switch-wrapper map-floating-control">
-			<a onClick={this.menuButtonClick} data-value="false" className={!this.state.includeNordic ? 'selected' : ''}>Svenska sägner</a>
-			<a onClick={this.menuButtonClick} data-value="true" className={this.state.includeNordic ? 'selected' : ''}>Nordiska sägner</a>
+			<a onClick={this.menuButtonClick} data-value="true" className={this.state.includeNordic ? 'selected' : ''}>{l('Nordiska sägner')}</a>
+			<a onClick={this.menuButtonClick} data-value="false" className={!this.state.includeNordic ? 'selected' : ''}>{l('Svenska sägner')}</a>
 		</div>;
 	}
 
