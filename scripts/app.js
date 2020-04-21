@@ -61,7 +61,11 @@ window.l = Lang.get;
 // "component" pekar mot importerade componenter (se högst uppe i denna fil)
 ReactDOM.render(
 	<Router history={hashHistory}>
-		<Redirect from="/" to="/places"/>
+		{
+		//<Redirect from="/" to="/places"/>
+		//Nordic default:
+		}
+		<Redirect from="/" to="/places/nordic/true"/>
 		<Route path="/" component={Application}>
 
 			<Route path="/places(/record_ids/:record_ids)(/search/:search)(/search_field/:search_field)(/type/:type)(/category/:category)(/year_from/:year_from)(/year_to/:year_to)(/person_relation/:person_relation)(/gender/:gender)(/person_landskap/:person_landskap)(/person_county/:person_county)(/person_harad/:person_harad)(/person_socken/:person_socken)(/nordic/:nordic)(/page/:page)" 

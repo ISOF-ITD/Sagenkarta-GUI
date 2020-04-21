@@ -12,6 +12,7 @@ export default class NordicSwitch extends React.Component {
 			window.eventBus.addEventListener('application.searchParams', this.receivedSearchParams.bind(this))
 		}
 
+		//console.log('window.applicationSettings.includeNordic:' + window.applicationSettings.includeNordic)
 		this.state = {
 			includeNordic: false,
 			selectedCategory: null
