@@ -10,18 +10,20 @@ export default {
 
 	// Speciella inställningar för projektet, används nu mest för Matkarta-GUI, siteOptions som property av config måste dock finnas
 	siteOptions: {
-	/*
 		recordList: {
 			// Döljd materialtyp i RecordList, används för matkartan
 			hideMaterialType: true,
 
+			/*
 			// Döljd kategorier kolumn i RecordList, används för folkmusiken
 			hideCategories: true
+			*/
 
 			// Vilka kategorier vi vill visa i listan, här vill vi bara visa matkarta kategorier men dölja frågolista-kategorier
-			visibleCategories: ['matkarta']
+			visibleCategories: ['sägner']
 		},
 
+		/*
 		recordView: {
 			// Vilka metadata fälts skulle visas i RecordView, används för folkmusiken
 			visible_metadata_fields: [
@@ -70,7 +72,9 @@ export default {
 
 	// Url till Django/Elasticsearch API
 	apiUrl: 'https://frigg.isof.se/sagendatabas/api/es/',
+	//apiUrl: 'https://frigg-test.isof.se/sagendatabas/api/es/',
 
 	// Url till Django Rest API
 	restApiUrl: 'https://frigg.isof.se/sagendatabas/api/'
+	//restApiUrl: 'https://frigg-test.isof.se/sagendatabas/api/'
 };
