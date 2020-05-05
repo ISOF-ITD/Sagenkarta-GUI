@@ -1,4 +1,6 @@
 import React from 'react';
+import { Router } from 'react-router-dom';
+//import history from './../../ISOF-React-modules/components/History';
 
 import CategoryMenu from './CategoryMenu';
 import SearchBox from './SearchBox';
@@ -19,25 +21,13 @@ export default class SearchMenu extends React.Component {
 
 	componentDidMount() {
 		this.setState({
-			selectedCategory: this.props.selectedCategory,
-			searchValue: this.props.searchValue,
-			searchField: this.props.searchField,
-			searchYearFrom: this.props.searchYearFrom,
-			searchYearTo: this.props.searchYearTo,
-			searchPersonRelation: this.props.searchPersonRelation,
-			searchGender: this.props.searchGender
+			// remove all, first prop: selectedCategory: this.props.selectedCategory,
 		});
 	}
 
 	componentWillReceiveProps(props) {
 		this.setState({
-			selectedCategory: props.selectedCategory,
-			searchValue: props.searchValue,
-			searchField: props.searchField,
-			searchYearFrom: props.searchYearFrom,
-			searchYearTo: props.searchYearTo,
-			searchPersonRelation: props.searchPersonRelation,
-			searchGender: props.searchGender
+			// remove all, first prop: selectedCategory: this.props.selectedCategory,
 		});
 	}
 

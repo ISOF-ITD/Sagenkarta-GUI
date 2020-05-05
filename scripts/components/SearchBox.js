@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { hashHistory } from 'react-router';
 
 import DropdownMenu from './../../ISOF-React-modules/components/controls/DropdownMenu';
 import CategoryList from './CategoryList';
@@ -47,14 +46,14 @@ export default class SearchBox extends React.Component {
 
 	executeSimpleSearch() {
 		// Lägg sökroute till url:et, kommer hanteras via router objected i app.js och skickas till MapView och RecordList
-		hashHistory.push('/places'
+		history.push('/places'
 			+(this.state.searchValue != '' ? '/search/'+this.state.searchValue+'/search_field/'+this.state.searchField : '')
 			+(this.state.includeNordic ? '/nordic/true' : ''));
 	}
 
 	searchButtonClickHandler() {
 		// Lägg mer komplicerad sökroute till url:et, kommer hanteras via router objected i app.js och skickas till MapView och RecordList
-		hashHistory.push(
+		history.push(
 			'/places'+
 			(
 				this.state.searchValue != '' ?
