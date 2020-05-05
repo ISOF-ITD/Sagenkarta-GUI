@@ -1,8 +1,9 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import MapMenu from './MapMenu';
 import MapView from './../../ISOF-React-modules/components/views/MapView';
+import PlaceView from './../../ISOF-React-modules/components/views/PlaceView';
 import RoutePopupWindow from './../../ISOF-React-modules/components/controls/RoutePopupWindow';
 import LocalLibraryView from './../../ISOF-React-modules/components/views/LocalLibraryView';
 import ImageOverlay from './../../ISOF-React-modules/components/views/ImageOverlay';
@@ -206,46 +207,46 @@ export default class Application extends React.Component {
 
 		return (
 				<div className={'app-container'+(this.state.popupVisible ? ' has-overlay' : '')}>
-
-
-					<Route 
-						exact path={[
-							//"/places/:place_id/category/:category,:subcategory/(nordic)?/:nordic?",
-							"/places/:place_id/category/:category/(nordic)?/:nordic?",
-							//"/places/:place_id/search/:search/category/:category,:subcategory/(nordic)?/:nordic?",
-							"/places/:place_id/search/:search/category/:category/(nordic)?/:nordic?",
-							"/places/:place_id/search/:search/(nordic)?/:nordic?",
-							"/places/:place_id/nordic/:nordic",
-							"/places/:place_id",
-						]}
-						render={(_props) =>
+					<Switch>
+						<Route 
+							path={[
+								// //"/places/:place_id/category/:category,:subcategory/(nordic)?/:nordic?",
+								// "/places/:place_id/category/:category/(nordic)?/:nordic?",
+								// //"/places/:place_id/search/:search/category/:category,:subcategory/(nordic)?/:nordic?",
+								// "/places/:place_id/search/:search/category/:category/(nordic)?/:nordic?",
+								// "/places/:place_id/search/:search/(nordic)?/:nordic?",
+								// "/places/:place_id/nordic/:nordic",
+								"/places/:place_id([0-9]+)",
+							]}
+							render={(_props) =>
+								<RoutePopupWindow
+									onShow={this.popupWindowShowHandler}
+									onHide={this.popupWindowHideHandler}
+									onClose={this.popupCloseHandler}
+									router={this.context.router}>
+										<PlaceView {..._props}/>
+								</RoutePopupWindow>
+							}
+						/>
+						<Route path = "/places" render={() =>
 							<RoutePopupWindow
 								onShow={this.popupWindowShowHandler}
 								onHide={this.popupWindowHideHandler}
 								onClose={this.popupCloseHandler}
 								router={this.context.router}>
-									<PlaceView {..._props}/>
+									{_props.popup}
 							</RoutePopupWindow>
-						}
-					/>
-					<Route path = "/places" render={() =>
-						<RoutePopupWindow
-							onShow={this.popupWindowShowHandler}
-							onHide={this.popupWindowHideHandler}
-							onClose={this.popupCloseHandler}
-							router={this.context.router}>
-								{_props.popup}
-						</RoutePopupWindow>
-					}/>
-					<Route path = "/record" render={() =>
-						<RoutePopupWindow
-							onShow={this.popupWindowShowHandler}
-							onHide={this.popupWindowHideHandler}
-							onClose={this.popupCloseHandler}
-							router={this.context.router}>
-								{_props.popup}
-						</RoutePopupWindow>
-					}/>
+						}/>
+						<Route path = "/record" render={() =>
+							<RoutePopupWindow
+								onShow={this.popupWindowShowHandler}
+								onHide={this.popupWindowHideHandler}
+								onClose={this.popupCloseHandler}
+								router={this.context.router}>
+									{_props.popup}
+							</RoutePopupWindow>
+						}/>
+					</Switch>
 
 					<MapView
 						searchParams={this.props.match.params}

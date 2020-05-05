@@ -46,9 +46,15 @@ export default class SearchBox extends React.Component {
 
 	executeSimpleSearch() {
 		// Lägg sökroute till url:et, kommer hanteras via router objected i app.js och skickas till MapView och RecordList
-		history.push('/places'
-			+(this.state.searchValue != '' ? '/search/'+this.state.searchValue+'/search_field/'+this.state.searchField : '')
-			+(this.state.includeNordic ? '/nordic/true' : ''));
+		// history.push('/places'
+		// 	+(this.state.searchValue != '' ? '/search/'+this.state.searchValue+'/search_field/'+this.state.searchField : '')
+		// 	+(this.state.includeNordic ? '/nordic/true' : ''));
+		if (this.props.onSearch) {
+			this.props.onSearch({
+				searchValue: this.state.searchValue,
+				searchField: this.state.searchField,
+			});
+		}
 	}
 
 	searchButtonClickHandler() {

@@ -1,7 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import _ from 'underscore';
-import { hashHistory } from 'react-router';
 
 import CategoryList from './CategoryList';
 import categories from './../../ISOF-React-modules/utils/sagenkartaCategories.js';
@@ -28,10 +26,10 @@ export default class CategoryMenu extends React.Component {
 
 	categoryItemClickHandler(event) {
 		if (event.selectedCategory == this.state.selectedCategory) {
-			hashHistory.push('/places'+(this.state.includeNordic ? '/nordic/true' : ''));
+			this.props.history.push('/places'+(this.state.includeNordic ? '/nordic/true' : ''));
 		}
 		else {
-			hashHistory.push('/places/category/'+event.selectedCategory+(this.state.includeNordic ? '/nordic/true' : ''));
+			this.props.history.push('/places/category/'+event.selectedCategory+(this.state.includeNordic ? '/nordic/true' : ''));
 		}
 	}
 

@@ -75,6 +75,8 @@ ReactDOM.render(
 				//"/places/search/:search/category/:category/(has_metadata)?/:has_metadata?",
 				//"/places/search/:search/(has_metadata)?/:has_metadata?",
 				"/places/search/:search/category/:category/(nordic)?/:nordic?",
+				"/places/search/:search/search_field/:search_field/category/:category/(nordic)?/:nordic?",
+				"/places/search/:search/search_field/:search_field/(nordic)?/:nordic?",
 				"/places/search/:search/(nordic)?/:nordic?",
 				
 				"/places/search_field/:search_field",
@@ -88,11 +90,11 @@ ReactDOM.render(
 				//"/places/:place_id/search/:search/(has_metadata)?/:has_metadata?",
 				//"/places/:place_id/(has_metadata)?/:has_metadata?",
 
-				"/places/:place_id/category/:category/(nordic)?/:nordic?",
+				"/places/:place_id([0-9]+)/category/:category/(nordic)?/:nordic?",
 				"/places/category/:category/(nordic)?/:nordic?",
-				"/places/:place_id/(nordic)?/:nordic?",
-				"/places/:place_id/search/:search/category/:category/(nordic)?/:nordic?",
-				"/places/:place_id/search/:search/(nordic)?/:nordic?",
+				"/places/:place_id([0-9]+)/(nordic)?/:nordic?",
+				"/places/:place_id([0-9]+)/search/:search/category/:category/(nordic)?/:nordic?",
+				"/places/:place_id([0-9]+)/search/:search/(nordic)?/:nordic?",
 
 				"/places/(nordic)?/:nordic?", // this has to be the last item in order to match the other routes, 
 				//"/places/(has_metadata)?/:has_metadata?", // this has to be the last item in order to match the other routes, 
