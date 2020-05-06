@@ -117,23 +117,23 @@ ReactDOM.render(
 		/>
 		<Route 
 			path={[
-				//"/record/:record_id/text_ids/:text_ids/(has_metadata)?/:has_metadata?",
-				//"/record/:record_id/search/:search/category/:category,:subcategory/(has_metadata)?/:has_metadata?",
-				//"/record/:record_id/search/:search/category/:category/(has_metadata)?/:has_metadata?",
-				//"/record/:record_id/search/:search/(has_metadata)?/:has_metadata?",
-				//"/record/:record_id/search_field/:search_field/(has_metadata)?/:has_metadata?",
-				//"/record/:record_id/category/:category,:subcategory/(has_metadata)?/:has_metadata?",
-				//"/record/:record_id/category/:category/(has_metadata)?/:has_metadata?",
-				//"/record/:record_id/(has_metadata)?/:has_metadata?",
+				//"/records/:record_id/text_ids/:text_ids/(has_metadata)?/:has_metadata?",
+				//"/records/:record_id/search/:search/category/:category,:subcategory/(has_metadata)?/:has_metadata?",
+				//"/records/:record_id/search/:search/category/:category/(has_metadata)?/:has_metadata?",
+				//"/records/:record_id/search/:search/(has_metadata)?/:has_metadata?",
+				//"/records/:record_id/search_field/:search_field/(has_metadata)?/:has_metadata?",
+				//"/records/:record_id/category/:category,:subcategory/(has_metadata)?/:has_metadata?",
+				//"/records/:record_id/category/:category/(has_metadata)?/:has_metadata?",
+				//"/records/:record_id/(has_metadata)?/:has_metadata?",
 
-				"/record/:person_id/text_ids/:text_ids/(nordic)?/:nordic?",
-				//"/record/:record_id/search/:search/category/:category,:subcategory/(nordic)?/:nordic?",
-				"/record/:record_id/search/:search/category/:category/(nordic)?/:nordic?",
-				"/record/:record_id/search/:search/(nordic)?/:nordic?",
-				"/record/:record_id/search_field/:search_field/(nordic)?/:nordic?",
-				//"/record/:record_id/category/:category,:subcategory/(nordic)?/:nordic?",
-				"/record/:record_id/category/:category/(nordic)?/:nordic?",
-				"/record/:record_id/(nordic)?/:nordic?",
+				"/records/:person_id/text_ids/:text_ids/(nordic)?/:nordic?",
+				//"/records/:record_id/search/:search/category/:category,:subcategory/(nordic)?/:nordic?",
+				"/records/:record_id/search/:search/category/:category/(nordic)?/:nordic?",
+				"/records/:record_id/search/:search/(nordic)?/:nordic?",
+				"/records/:record_id/search_field/:search_field/(nordic)?/:nordic?",
+				//"/records/:record_id/category/:category,:subcategory/(nordic)?/:nordic?",
+				"/records/:record_id/category/:category/(nordic)?/:nordic?",
+				"/records/:record_id/(nordic)?/:nordic?",
 			]}
 			render={(match) =>
 				<Application
@@ -173,7 +173,7 @@ ReactDOM.render(
 //			<Route path="/person/:person_id" 
 //				components={{popup: PersonView}}/>
 
-//			<Route path="/record/:record_id(/record_ids/:record_ids)(/search/:search)(/search_field/:search_field)(/type/:type)(/category/:category)(/year_from/:year_from)(/year_to/:year_to)(/person_relation/:person_relation)(/gender/:gender)(/person_landskap/:person_landskap)(/person_county/:person_county)(/person_harad/:person_harad)(/person_socken/:person_socken)(/nordic/:nordic)" 
+//			<Route path="/records/:record_id(/record_ids/:record_ids)(/search/:search)(/search_field/:search_field)(/type/:type)(/category/:category)(/year_from/:year_from)(/year_to/:year_to)(/person_relation/:person_relation)(/gender/:gender)(/person_landskap/:person_landskap)(/person_county/:person_county)(/person_harad/:person_harad)(/person_socken/:person_socken)(/nordic/:nordic)" 
 //				components={{popup: RecordView}}/>
 
 
