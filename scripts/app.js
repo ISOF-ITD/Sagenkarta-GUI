@@ -65,7 +65,7 @@ ReactDOM.render(
 
 	<HashRouter>
 		<Route exact path="/">
-			<Redirect to="/places/" />
+			<Redirect to="/places/nordic/true" />
 		</Route>
 		<Route 
 			path={[
