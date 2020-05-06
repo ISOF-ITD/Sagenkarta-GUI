@@ -226,12 +226,6 @@ export default class Application extends React.Component {
 						/>
 						<Route 
 							path={[
-								// //"/places/:place_id/category/:category,:subcategory/(nordic)?/:nordic?",
-								// "/places/:place_id/category/:category/(nordic)?/:nordic?",
-								// //"/places/:place_id/search/:search/category/:category,:subcategory/(nordic)?/:nordic?",
-								// "/places/:place_id/search/:search/category/:category/(nordic)?/:nordic?",
-								// "/places/:place_id/search/:search/(nordic)?/:nordic?",
-								// "/places/:place_id/nordic/:nordic",
 								"/places/:place_id([0-9]+)",
 							]}
 							render={(_props) =>
