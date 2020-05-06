@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import MapMenu from './MapMenu';
 import MapView from './../../ISOF-React-modules/components/views/MapView';
 import PlaceView from './../../ISOF-React-modules/components/views/PlaceView';
+import PersonView from './../../ISOF-React-modules/components/views/PersonView';
 import RoutePopupWindow from './../../ISOF-React-modules/components/controls/RoutePopupWindow';
 import LocalLibraryView from './../../ISOF-React-modules/components/views/LocalLibraryView';
 import ImageOverlay from './../../ISOF-React-modules/components/views/ImageOverlay';
@@ -34,7 +35,7 @@ export default class Application extends React.Component {
 			ISOF-React-modules/components/collections/RecordsCollection.js i Nordisk_sägenkarta branchen.
 		*/
 		window.applicationSettings = {
-			includeNordic: false
+			includeNordic: true
 		};
 
 		// Bind all event handlers to this (the actual component) to make component variables available inside the functions
@@ -74,7 +75,7 @@ export default class Application extends React.Component {
 			this.props.history.push(routeHelper.createPlacesPathFromPlace(this.props.location.pathname));
 		}
 		else {
-			this.props.history.push('places');
+			this.props.history.push('/places');
 		}
 	}
 
@@ -204,10 +205,25 @@ export default class Application extends React.Component {
 	render() {
 		// Innehåll av RoutePopupWindow, kommer från application route i app.js
 		const _props = this.props;
+		const match = this.props.match;
 
 		return (
 				<div className={'app-container'+(this.state.popupVisible ? ' has-overlay' : '')}>
 					<Switch>
+						<Route 
+							path={[
+								"/person/:person_id",
+							]}
+							render={(_props) =>
+								<RoutePopupWindow
+									onShow={this.popupWindowShowHandler}
+									onHide={this.popupWindowHideHandler}
+									onClose={this.popupCloseHandler}
+									router={this.context.router}>
+										<PersonView {..._props} match={match}/>
+								</RoutePopupWindow>
+							}
+						/>
 						<Route 
 							path={[
 								// //"/places/:place_id/category/:category,:subcategory/(nordic)?/:nordic?",
@@ -224,7 +240,7 @@ export default class Application extends React.Component {
 									onHide={this.popupWindowHideHandler}
 									onClose={this.popupCloseHandler}
 									router={this.context.router}>
-										<PlaceView {..._props}/>
+										<PlaceView {..._props} match={match}/>
 								</RoutePopupWindow>
 							}
 						/>
