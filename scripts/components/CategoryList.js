@@ -70,6 +70,13 @@ export default class CategoryMenu extends React.Component {
 
 	render() {
 		var items = categories.categories.map(function(item, index) {
+			// TODO: Use l() instead of label_no?
+			if (window.currentLang) {
+				if (window.currentLang == 'no') {
+					item.label = item.label_no;
+				}
+			};
+
 			if (this.props.multipleSelect) {
 				return <label key={index} data-index={index} className="item"><input value={item.letter} onChange={this.selectionChangeHandler} type="checkbox"/>{item.label}</label>;
 			}
