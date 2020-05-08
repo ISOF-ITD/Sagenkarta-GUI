@@ -2,6 +2,13 @@ export default {
 	'sv': {
 		//Temporary solution to remove text "Fylke" for Finland (and this solution also Norway)
 		'Fylke': ' ',
+		// Transcription status to user:
+		'untranscribed':'Ej transkribera', 
+		'readytotranscribe':'Nej', 
+		'transcribed':'Granskas', 
+		'reviewing':'Granskas', 
+		'approved':'Granskas',
+		'published':'Ja'
 	},
 	'no': {
 		'Karta': 'Kart',
@@ -80,5 +87,15 @@ export default {
 		'Kommentarer': 'Ordforklaringer og lignende i opptegnelsene/utgavene',
 		'Tryckt källa': 'Tryckt källa',
 		'Avskriven': 'Avskriven',
+		'Frågor och synpunkter': 'Frågor och synpunkter',
+		'Vet du mer?': 'Vet du mer?',
+		'Hjälp': 'Hjälp',
+		// Transcription status to user:
+		'untranscribed':'Ej transkribera', 
+		'readytotranscribe':'Nej', 
+		'transcribed':'Granskas', 
+		'reviewing':'Granskas', 
+		'approved':'Granskas',
+		'published':'Ja'
 	}
 }
