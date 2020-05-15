@@ -184,7 +184,7 @@ export default class SearchBox extends React.Component {
 	windowClickHandler(event) {
 		var componentEl = ReactDOM.findDOMNode(this.refs.container);
 
-		if (!componentEl.contains(event.target) && !this.state.advanced) {
+		if (!!componentEl && !componentEl.contains(event.target) && !this.state.advanced) {
 			this.setState({
 				expanded: false
 			}, function() {

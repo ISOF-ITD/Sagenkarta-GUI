@@ -16,10 +16,10 @@ export default {
 
 			/*
 			// Dölj kategorier kolumn i RecordList, används för folkmusiken
-			hideCategories: true
+			hideCategories: true,
 
 			// Dölj TranscriptionStatus kolumn i RecordList, används bara för crowdsource?
-			hideTranscriptionStatus: true
+			hideTranscriptionStatus: true,
 			*/
 
 			// Vilka kategorier vi vill visa i listan, här vill vi bara visa matkarta kategorier men dölja frågolista-kategorier
