@@ -25,7 +25,7 @@ export default class CategoryMenu extends React.Component {
 		});
 	}
 
-	componentWillReceiveProps(props) {
+	UNSAFE_componentWillReceiveProps(props) {
 		if (this.props.selectedCategory !== props.selectedCategory) {
 			this.setState({
 				selectedCategory: props.selectedCategory,

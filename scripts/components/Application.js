@@ -163,7 +163,7 @@ export default class Application extends React.Component {
 		}.bind(this));
 	}
 
-	componentWillReceiveProps(props) {
+	UNSAFE_componentWillReceiveProps(props) {
 		// När application tar emot parametrar från url:et, skicka dem via eventBus
 		// MapView, RecordsList och sökfält tar emot dem och hämtar data
 		if (window.eventBus) {

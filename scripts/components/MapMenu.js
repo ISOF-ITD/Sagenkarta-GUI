@@ -26,7 +26,7 @@ export default class SearchMenu extends React.Component {
 		});
 	}
 
-	componentWillReceiveProps(props) {
+	UNSAFE_componentWillReceiveProps(props) {
 		this.setState({
 			// remove all, first prop: selectedCategory: this.props.selectedCategory,
 		});
