@@ -4,8 +4,6 @@ import { HashRouter, Route, Redirect } from 'react-router-dom'
 
 import Application from './components/Application';
 import RecordListWrapper from './../ISOF-React-modules/components/views/RecordListWrapper';
-import RecordView from './../ISOF-React-modules/components/views/RecordView';
-import PlaceView from './../ISOF-React-modules/components/views/PlaceView';
 import PersonView from './../ISOF-React-modules/components/views/PersonView';
 
 console.log(`Sägenkartan running React.js version ${React.version} and ReactDOM version ${ReactDOM.version}`);
@@ -69,7 +67,10 @@ ReactDOM.render(
 		</Route>
 		<Route 
 			path={[
-				"/places/text_ids/:text_ids",
+				//"/places/text_ids/:text_ids",
+
+				// Saved records by user
+				"/places/record_ids/:record_ids/(nordic)?/:nordic?",
 
 				//"/places/search/:search?/category/:category,:subcategory/(has_metadata)?/:has_metadata?",
 				//"/places/search/:search/category/:category/(has_metadata)?/:has_metadata?",
@@ -100,32 +101,6 @@ ReactDOM.render(
 				//"/places/(has_metadata)?/:has_metadata?", // this has to be the last item in order to match the other routes, 
 				// otherwise it will match longer paths as well
 
-
-			]}
-			render={(match) =>
-				<Application
-					popup={<RecordListWrapper 
-						{...match} 
-						manuallyOpenPopup={true}
-						//highlightRecordsWithMetadataField="sitevision_url" 
-						openButtonLabel="Visa sökträffar som lista"
-						disableRouterPagination={true}
-						/>}
-					{...match}	
-				/>
-			}
-		/>
-		<Route 
-			path={[
-				//"/records/:record_id/text_ids/:text_ids/(has_metadata)?/:has_metadata?",
-				//"/records/:record_id/search/:search/category/:category,:subcategory/(has_metadata)?/:has_metadata?",
-				//"/records/:record_id/search/:search/category/:category/(has_metadata)?/:has_metadata?",
-				//"/records/:record_id/search/:search/(has_metadata)?/:has_metadata?",
-				//"/records/:record_id/search_field/:search_field/(has_metadata)?/:has_metadata?",
-				//"/records/:record_id/category/:category,:subcategory/(has_metadata)?/:has_metadata?",
-				//"/records/:record_id/category/:category/(has_metadata)?/:has_metadata?",
-				//"/records/:record_id/(has_metadata)?/:has_metadata?",
-
 				"/records/:person_id/text_ids/:text_ids/(nordic)?/:nordic?",
 				//"/records/:record_id/search/:search/category/:category,:subcategory/(nordic)?/:nordic?",
 				"/records/:record_id/search/:search/category/:category/(nordic)?/:nordic?",
@@ -134,31 +109,24 @@ ReactDOM.render(
 				//"/records/:record_id/category/:category,:subcategory/(nordic)?/:nordic?",
 				"/records/:record_id/category/:category/(nordic)?/:nordic?",
 				"/records/:record_id/(nordic)?/:nordic?",
+
+				"/person/:person_id/(nordic)?/:nordic?",
+
 			]}
-			render={(match) =>
+			render={(props) =>
 				<Application
-					popup={<RecordView
-						{...match} 
-						fullWidthContentArea={true}
+					popup={<RecordListWrapper 
+						{...props} 
+						manuallyOpenPopup={true}
+						//highlightRecordsWithMetadataField="sitevision_url" 
+						openButtonLabel="Visa sökträffar som lista"
+						disableRouterPagination={true}
 						/>}
-					{...match}	
+					{...props}	
 				/>
 			}
 		/>
-		<Route 
-			path={[
-				"/person/:person_id",
-			]}
-			render={(match) =>
-				<Application
-					popup={<PersonView
-						{...match} 
-						fullWidthContentArea={true}
-						/>}
-					{...match}	
-				/>
-			}
-		/>
+
 	</HashRouter>,
 	document.getElementById('app')
 

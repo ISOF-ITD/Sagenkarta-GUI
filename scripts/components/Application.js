@@ -5,6 +5,7 @@ import MapMenu from './MapMenu';
 import MapView from './../../ISOF-React-modules/components/views/MapView';
 import PlaceView from './../../ISOF-React-modules/components/views/PlaceView';
 import PersonView from './../../ISOF-React-modules/components/views/PersonView';
+import RecordView from './../../ISOF-React-modules/components/views/RecordView';
 import RoutePopupWindow from './../../ISOF-React-modules/components/controls/RoutePopupWindow';
 import LocalLibraryView from './../../ISOF-React-modules/components/views/LocalLibraryView';
 import ImageOverlay from './../../ISOF-React-modules/components/views/ImageOverlay';
@@ -55,7 +56,8 @@ export default class Application extends React.Component {
 			searchValue: '',
 			searchField: '',
 
-			params: this.props.match.params,
+			//params: this.props.match.params,
+			match: {},
 			popupVisible: false
 		};
 	}
@@ -75,7 +77,8 @@ export default class Application extends React.Component {
 			this.props.history.push(routeHelper.createPlacesPathFromPlace(this.props.location.pathname));
 		}
 		else {
-			this.props.history.push('/places');
+			var routeParams = routeHelper.createSearchRoute(this.props.match.params);
+			this.props.history.push('/places' +(routeParams ? routeParams : ''));
 		}
 	}
 
@@ -153,7 +156,8 @@ export default class Application extends React.Component {
 			searchGender: this.props.match.params.gender,
 			searchMetadata: this.props.match.params.has_metadata,
 			//In Sägenkarta
-			params: this.props.match.params
+			match: this.props.match,
+			//params: this.props.match.params
 		}, function() {
 			setTimeout(function() {
 				// Väntar en sekund, lägger till app-initialized till body class,
@@ -193,7 +197,8 @@ export default class Application extends React.Component {
 			searchMetadata: props.match.params.has_metadata,
 			//In Sägenkarta
 			includeNordic: props.match.params.nordic,
-			params: props.match.params
+			//params: props.match.params
+			match: props.match,
 		});
 	}
 
@@ -203,10 +208,6 @@ export default class Application extends React.Component {
 	}
 
 	render() {
-		// Innehåll av RoutePopupWindow, kommer från application route i app.js
-		const _props = this.props;
-		const match = this.props.match;
-
 		return (
 				<div className={'app-container'+(this.state.popupVisible ? ' has-overlay' : '')}>
 					<Switch>
@@ -214,13 +215,13 @@ export default class Application extends React.Component {
 							path={[
 								"/person/:person_id",
 							]}
-							render={(_props) =>
+							render={() =>
 								<RoutePopupWindow
 									onShow={this.popupWindowShowHandler}
 									onHide={this.popupWindowHideHandler}
 									onClose={this.popupCloseHandler}
 									router={this.context.router}>
-										<PersonView {..._props} match={match}/>
+										<PersonView match={this.props.match} />
 								</RoutePopupWindow>
 							}
 						/>
@@ -228,23 +229,25 @@ export default class Application extends React.Component {
 							path={[
 								"/places/:place_id([0-9]+)",
 							]}
-							render={(_props) =>
+							>
 								<RoutePopupWindow
 									onShow={this.popupWindowShowHandler}
 									onHide={this.popupWindowHideHandler}
 									onClose={this.popupCloseHandler}
 									router={this.context.router}>
-										<PlaceView {..._props} match={match}/>
+										<PlaceView 
+											match={this.props.match}
+										/>
 								</RoutePopupWindow>
-							}
-						/>
+						</Route>
+
 						<Route path = "/places" render={() =>
 							<RoutePopupWindow
 								onShow={this.popupWindowShowHandler}
 								onHide={this.popupWindowHideHandler}
 								onClose={this.popupCloseHandler}
 								router={this.context.router}>
-									{_props.popup}
+									{this.props.popup}
 							</RoutePopupWindow>
 						}/>
 						<Route path = "/records" render={() =>
@@ -253,7 +256,7 @@ export default class Application extends React.Component {
 								onHide={this.popupWindowHideHandler}
 								onClose={this.popupCloseHandler}
 								router={this.context.router}>
-									{_props.popup}
+									<RecordView {...this.props} />
 							</RoutePopupWindow>
 						}/>
 					</Switch>
@@ -266,14 +269,14 @@ export default class Application extends React.Component {
 					>
 
 						<MapMenu
-							searchParams={this.state.params}
+							searchParams={this.props.match.params}
 							//searchMetadata={this.state.searchMetadata}
 							//selectedCategory={this.state.selectedCategory}
 							//selectedSubcategory={this.state.selectedSubcategory}
-							{..._props}
+							{...this.props}
 						/>
 
-						<LocalLibraryView headerText={l('Mina sägner')} {..._props} />
+						<LocalLibraryView headerText={l('Mina sägner')} history={this.props.history} />
 
 					</MapView>
 

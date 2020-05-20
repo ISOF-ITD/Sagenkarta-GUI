@@ -6,7 +6,7 @@ import CategoryMenu from './CategoryMenu';
 import SearchBox from './SearchBox';
 import NordicSwitch from './NordicSwitch';
 
-export default class SearchMenu extends React.Component {
+export default class MapMenu extends React.Component {
 	constructor(props) {
 		super(props);
 

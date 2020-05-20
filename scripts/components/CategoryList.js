@@ -48,7 +48,7 @@ export default class CategoryMenu extends React.Component {
 	}
 
 	selectionChangeHandler(event) {
-		console.log(event.target.value);
+		//console.log(event.target.value);
 		var value = event.target.value;
 		var selectedCategories = this.state.selectedCategories;
 
