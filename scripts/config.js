@@ -66,7 +66,7 @@ export default {
 	//Use application specific config by country using component property "country"
 	feedbackEmailByCountry: {
 	  "finland": "arkivet@sls.fi",
-	  "norway": "fredrik.skott@isof.se"
+	  "norway": "folkeminner@ikos.uio.no"
 	},
 
 	// Webbsida som ska visas i OverlayWindow när användaren först kommer till kartan
