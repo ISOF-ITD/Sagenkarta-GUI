@@ -48,8 +48,8 @@ Se https://webbriktlinjer.se/riktlinjer/?filter=on&guidelineorder=a&freetext-fil
 |	3.2.4 | (AA) |	[Benämn funktioner konsekvent](https://webbriktlinjer.se/riktlinjer/146-benamn-funktioner-konsekvent/) | ✔️ |
 |	3.3.1 | (A) |	[Visa var ett fel uppstått och beskriv det tydligt](https://webbriktlinjer.se/riktlinjer/2-ge-begripliga-felmeddelanden/) | ❔ |
 |	3.3.2 | (A) |	[Skapa tydliga och klickbara fältetiketter](https://webbriktlinjer.se/riktlinjer/55-skapa-tydliga-och-klickbara-faltetiketter/) | ✔️ |
-|	3.3.3 | (AA) |	[Ge förslag på hur fel kan rättas till](https://webbriktlinjer.se/riktlinjer/149-ge-forslag-pa-hur-fel-kan-rattas-till/) | ❌ |
-|	3.3.4 | (AA) |	[Ge möjlighet att ångra, korrigera eller bekräfta vid viktiga transaktioner](https://webbriktlinjer.se/riktlinjer/150-ge-mojlighet-att-angra-korrigera-eller-bekrafta-viktiga-transaktioner/) | ❌ |
+|	3.3.3 | (AA) |	[Ge förslag på hur fel kan rättas till](https://webbriktlinjer.se/riktlinjer/149-ge-forslag-pa-hur-fel-kan-rattas-till/) | ❌ | Lägre prioritet. Har inte hänt på år?
+|	3.3.4 | (AA) |	[Ge möjlighet att ångra, korrigera eller bekräfta vid viktiga transaktioner](https://webbriktlinjer.se/riktlinjer/150-ge-mojlighet-att-angra-korrigera-eller-bekrafta-viktiga-transaktioner/) | ❌ | Lägre prioritet: Inga viktiga transaktioner.
 |	4.1.1 | (A) |	[Se till att koden validerar](https://webbriktlinjer.se/riktlinjer/84-se-till-att-koden-validerar/) | 🟡 | [HTML validerar](https://validator.w3.org/nu/?doc=https%3A%2F%2Fwww.isof.se%2Fmatkult%2Fkartan.html), [CSS validerar inte](http://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fwww.isof.se%2Fmatkult%2Fkartan.html&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
 |	4.1.2 | (A) |	[Se till att skräddarsydda komponenter fungerar i hjälpmedel](https://webbriktlinjer.se/riktlinjer/152-se-till-att-skraddarsydda-komponenter-fungerar-hjalpmedel/) | ✔️ | 
 |	4.1.3 | (AA) |	[Se till att hjälpmedel kan presentera meddelanden som inte är i fokus](https://webbriktlinjer.se/riktlinjer/164-meddelanden-som-inte-ar-fokus/) | ❌ | Se också 1.4.13
