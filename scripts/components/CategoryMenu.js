@@ -69,7 +69,7 @@ export default class CategoryMenu extends React.Component {
 					<button onClick={this.toggleMinimize} className="minimize-button"><span>Minimera</span></button>
 				</div>
 
-				<div className={'list-container minimal-scrollbar'}>
+				<div tabindex={-1} className={'list-container minimal-scrollbar'}>
 					<CategoryList onItemClick={this.categoryItemClickHandler} ref="categoryList" selectedCategory={this.state.selectedCategory} />
 				</div>
 			</div>
