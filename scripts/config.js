@@ -63,11 +63,12 @@ export default {
 	// Vilket land vi hämtar data från
 	country: 'sweden',
 
+	// Remove when tested. 20200930
 	//Use application specific config by country using component property "country"
-	feedbackEmailByCountry: {
-	  "finland": "arkivet@sls.fi",
-	  "norway": "folkeminner@ikos.uio.no"
-	},
+	//feedbackEmailByCountry: {
+	//  "finland": "arkivet@sls.fi",
+	//  "norway": "folkeminner@ikos.uio.no"
+	//},
 
 	// Webbsida som ska visas i OverlayWindow när användaren först kommer till kartan
 	startPageUrl: 'https://www.isof.se/om-oss/kartor/sagenkartan/om-sagenkartan---kort.html',
@@ -84,6 +85,7 @@ export default {
 	//apiUrl: 'https://frigg-test.isof.se/sagendatabas/api/es/',
 
 	// Url till Django Rest API
+	//restApiUrl: 'http://127.0.0.1:8000/api/'
 	restApiUrl: 'https://frigg.isof.se/sagendatabas/api/'
 	//restApiUrl: 'https://frigg-test.isof.se/sagendatabas/api/'
 };
