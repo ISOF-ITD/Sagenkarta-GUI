@@ -75,8 +75,11 @@ ReactDOM.render(
 				//"/places/search/:search?/category/:category,:subcategory/(has_metadata)?/:has_metadata?",
 				//"/places/search/:search/category/:category/(has_metadata)?/:has_metadata?",
 				//"/places/search/:search/(has_metadata)?/:has_metadata?",
+				"/places/search/:search/category/:category/gender/:gender/(nordic)?/:nordic?",
 				"/places/search/:search/category/:category/(nordic)?/:nordic?",
+				"/places/search/:search/search_field/:search_field/category/:category/gender/:gender/(nordic)?/:nordic?",
 				"/places/search/:search/search_field/:search_field/category/:category/(nordic)?/:nordic?",
+				"/places/search/:search/search_field/:search_field/gender/:gender/(nordic)?/:nordic?",
 				"/places/search/:search/search_field/:search_field/(nordic)?/:nordic?",
 				"/places/search/:search/(nordic)?/:nordic?",
 				
@@ -93,6 +96,7 @@ ReactDOM.render(
 
 				"/places/:place_id([0-9]+)/category/:category/(nordic)?/:nordic?",
 				"/places/category/:category/(nordic)?/:nordic?",
+				"/places/gender/:gender/(nordic)?/:nordic?",
 				"/places/:place_id([0-9]+)/(nordic)?/:nordic?",
 				"/places/:place_id([0-9]+)/search/:search/category/:category/(nordic)?/:nordic?",
 				"/places/:place_id([0-9]+)/search/:search/(nordic)?/:nordic?",
