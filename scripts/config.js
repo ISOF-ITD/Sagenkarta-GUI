@@ -60,8 +60,8 @@ export default {
 	*/
 	},
 
-	// Vilket land vi hämtar data från
-	country: 'sweden',
+	// Vilket land vi hämtar data från: Borttagen NordicSwitch så inget filter längre.
+	// country: 'sweden',
 
 	// Remove when tested. 20200930
 	//Use application specific config by country using component property "country"

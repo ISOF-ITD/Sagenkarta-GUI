@@ -4,7 +4,7 @@ import { Router } from 'react-router-dom';
 
 import CategoryMenu from './CategoryMenu';
 import SearchBox from './SearchBox';
-import NordicSwitch from './NordicSwitch';
+//import NordicSwitch from './NordicSwitch';
 
 export default class MapMenu extends React.Component {
 	constructor(props) {
@@ -59,8 +59,6 @@ export default class MapMenu extends React.Component {
 		let _props = this.props
 		return (
 			<div className={'menu-wrapper'+(this.state.expanded ? ' menu-expanded' : '')+(this.state.advanced ? ' advanced-menu-view' : '')}>
-
-				<NordicSwitch {..._props} />
 
 				<SearchBox ref="searchBox" 
 					onSizeChange={this.searchBoxSizeChangeHandler} 
