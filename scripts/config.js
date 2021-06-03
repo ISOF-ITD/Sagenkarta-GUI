@@ -78,7 +78,8 @@ export default {
 	audioUrl: 'https://www4.isof.se/Folkminnen/Svenska_sagor_filer/inspelningar/',
 
 	appUrl: 'https://frigg.isof.se/static/js-apps/sagenkarta/',
-	siteUrl: 'https://www.isof.se/om-oss/kartor/sagenkartan.html',
+	// For share links to users and MAYBE some image links (is last slash needed?):
+	siteUrl: 'https://www.isof.se/sagenkartan/',
 
 	// Url till Django/Elasticsearch API
 	apiUrl: 'https://frigg.isof.se/sagendatabas/api/es/',
