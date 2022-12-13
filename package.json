@@ -46,7 +46,7 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "route-parser": "0.0.5",
-    "underscore": "^1.10.2",
+    "underscore": "^1.12.1",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0",
     "whatwg-fetch": "^3.0.0"
