@@ -29,6 +29,8 @@
 
 @import "../ISOF-React-modules/less/sitevision.less";
 
+@import "fonts.less";
+
 //isof profile colors until june 2021:
 @color-red: #a6192e;
 @color-red-lighter: #d4454c;
@@ -100,6 +102,8 @@ body {
 	margin: 0;
 
 	font-size: 1rem;
+
+	font-family: "Source Sans Pro",sans-serif;
 }
 
 .text-small {
@@ -213,5 +217,29 @@ audio::-webkit-media-controls-enclosure {
 @media print {
 	a {
 		text-decoration: none !important;
+	}
+}
+
+.lp-menu-map-info {
+	background: #fff;
+	border-radius: 2px;
+	border-top: 6px solid #1c3f49;
+	box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+	margin: 0;
+	min-width: 350px;
+	position: fixed;
+	right: 20px;
+	top: 20px;
+	visibility: visible;
+	z-index: 1100;
+	pointer-events: all;
+	padding: 19px 0;
+	a {
+		font-size: 1rem;
+		padding: 1rem 1.5rem;
+	}
+	li {
+		display: inline-block;
+		margin-bottom: 0;
 	}
 }
