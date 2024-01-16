@@ -62,15 +62,15 @@ export default {
 	startPageUrl: 'https://www.sprakochfolkminnen.se/om-oss/kartor/sagenkartan/om-sagenkartan---kort.html',
 
 	imageUrl: 'https://www4.sprakochfolkminnen.se/Folkminnen/Svenska_sagor_filer/',
-	personImageUrl: 'https://frigg-test.sprakochfolkminnen.se/media/',
+	personImageUrl: 'https://garm-test.sprakochfolkminnen.se/media/',
 	audioUrl: 'https://www4.sprakochfolkminnen.se/Folkminnen/Svenska_sagor_filer/inspelningar/',
 
-	appUrl: 'https://frigg-test.sprakochfolkminnen.se/static/js-apps/sagenkarta/',
+	appUrl: 'https://garm-test.sprakochfolkminnen.se/static/js-apps/sagenkarta/',
 	siteUrl: 'https://www.sprakochfolkminnen.se/om-oss/kartor/sagenkartan.html',
 
 	// Url till Django/Elasticsearch API
-	apiUrl: 'https://frigg-test.sprakochfolkminnen.se/sagendatabas/api/es/',
+	apiUrl: 'https://garm-test.sprakochfolkminnen.se/folkeservice/api/es/',
 
 	// Url till Django Rest API
-	restApiUrl: 'https://frigg-test.sprakochfolkminnen.se/sagendatabas/api/'
+	restApiUrl: 'https://garm-test.sprakochfolkminnen.se/folkeservice/api/'
 };

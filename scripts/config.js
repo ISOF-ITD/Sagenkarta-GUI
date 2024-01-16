@@ -74,19 +74,20 @@ export default {
 	startPageUrl: 'https://www.isof.se/om-oss/kartor/sagenkartan/om-sagenkartan---kort.html',
 
 	imageUrl: 'https://www4.isof.se/Folkminnen/Svenska_sagor_filer/',
-	personImageUrl: 'https://frigg.isof.se/media/',
+	personImageUrl: 'https://garm.isof.se/media/',
 	audioUrl: 'https://www4.isof.se/Folkminnen/Svenska_sagor_filer/inspelningar/',
 
-	appUrl: 'https://frigg.isof.se/static/js-apps/sagenkarta/',
+	appUrl: 'https://sagenkartan.isof.se/',
+	//appUrl: 'https://garm.isof.se/static/js-apps/sagenkarta/',
 	// For share links to users and MAYBE some image links (is last slash needed?):
 	siteUrl: 'https://www.isof.se/sagenkartan/',
 
 	// Url till Django/Elasticsearch API
-	apiUrl: 'https://frigg.isof.se/sagendatabas/api/es/',
-	//apiUrl: 'https://frigg-test.isof.se/sagendatabas/api/es/',
+	apiUrl: 'https://garm.isof.se/folkeservice/api/es/',
+	//apiUrl: 'https://garm-test.isof.se/folkeservice/api/es/',
 
 	// Url till Django Rest API
 	//restApiUrl: 'http://127.0.0.1:8000/api/'
-	restApiUrl: 'https://frigg.isof.se/sagendatabas/api/'
-	//restApiUrl: 'https://frigg-test.isof.se/sagendatabas/api/'
+	restApiUrl: 'https://garm.isof.se/folkeservice/api/'
+	//restApiUrl: 'https://garm-test.isof.se/folkeservice/api/'
 };
